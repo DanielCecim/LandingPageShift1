@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
 </head>
 <body>
@@ -24,16 +25,16 @@
         </a>
         
         <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#process">How it Works</a></li>
-            <li><a href="#case-study">Case Study</a></li>
+            <li><a href="#about">Quem somos</a></li>
+            <li><a href="#how">Como funciona</a></li>
+            <li><a href="#case-study">Estudo de caso</a></li>
         </ul>
         
-        <a href="#contact" class="nav-btn">Get in Touch</a>
+        <a href="#contact" class="nav-btn">Entre em contato</a>
         
-        <button class="nav-toggle" aria-label="Toggle navigation">
+        <div class="nav-toggle">
             <span></span><span></span><span></span>
-        </button>
+        </div>
     </div>
 </nav>
 
@@ -55,44 +56,46 @@
     
     <div class="hero-content fade-in">
         <h1 class="hero-title">
-            Inventory Optimization<br>with Machine Learning
+            <span style="font-weight: 800;">Otimização de Estoque</span> <br>
+            <span style="font-weight: 400; color: #ffffff;">com Machine Learning</span>
         </h1>
         
         <p class="hero-subtitle">
-            Shift builds commercial planning systems based on data training, 
-            significantly reducing stock errors and maximizing profitability.
+            A Shift monta o seu planejamento comercial baseado em 
+            treinamento de dados, reduzindo erros de estoque 
+            significativamente.
         </p>
         
         <div class="hero-cta">
-            <a href="#process" class="btn btn-primary">See how it works</a>
-            <a href="#contact" class="btn btn-secondary">Get in touch</a>
+            <a href="#how" class="btn btn-primary">Veja como funciona</a>
+            <a href="#contact" class="btn btn-secondary">Entre em contato</a>
         </div>
         </div>
     </div>
 </header>
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- ABOUT SECTION                                                      -->
+<!-- ABOUT SECTION (Quem Somos)                                         -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <section class="section section--dark" id="about">
     <div class="container">
         <div class="split-layout">
             <div class="split-text fade-in">
-                <div class="section-label">Who We Are</div>
+                <div class="section-label">QUEM SOMOS</div>
                 <h2 class="section-title">
-                    Shift was born with a purpose: <br>
-                    <span class="text-gradient">Transforming data into competitive advantage</span>
+                    A Shift nasceu com um propósito: <br>
+                    <span class="text-gradient">Transformar dados em <br>vantagem competitiva</span>
                 </h2>
                 <div class="section-desc">
                     <p>
-                        Shift is a startup specialized in machine learning that helps companies optimize 
-                        complex operational decisions with data science and artificial intelligence.
+                        A Shift é uma startup <span class="text-gradient-pink">especializada em machine learning</span> que ajuda empresas a otimizar 
+                        decisões operacionais complexas com ciência de dados e inteligência artificial.
+                        Desenvolvemos sistemas de ML de ponta a ponta.
                     </p>
                     <p>
-                        We develop end-to-end ML systems. We don't just predict — we recommend actions, 
-                        quantify risks, and measure impact. 
-                        We integrate machine learning into real business processes to <strong>increase efficiency, 
-                        reduce costs, and improve results.</strong>
+                        Não apenas prevemos, recomendamos ações, quantificamos riscos e medimos 
+                        impacto. Integramos machine learning aos processos reais do negócio para 
+                        <span class="text-gradient-pink">aumentar eficiência, reduzir custos e melhorar resultados.</span>
                     </p>
                 </div>
             </div>
@@ -101,24 +104,21 @@
                 <div class="feature-card">
                     <div class="feature-icon icon-ring"></div>
                     <div class="feature-content">
-                        <h3>Data Engineering</h3>
-                        <p>Robust pipelines ensuring data quality and availability.</p>
+                        <h3>Engenharia de dados</h3>
                     </div>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon icon-chart"></div>
                     <div class="feature-content">
-                        <h3>Probabilistic Forecasting</h3>
-                        <p>Confidence intervals you can trust for decision-making.</p>
+                        <h3>Forecasting probabilístico</h3>
                     </div>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon icon-dash"></div>
                     <div class="feature-content">
-                        <h3>Interactive Dashboards</h3>
-                        <p>Tools that let your team explore scenarios in real-time.</p>
+                        <h3>Dashboard interativo</h3>
                     </div>
                 </div>
             </div>
@@ -127,43 +127,46 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- PROCESS / HOW IT WORKS                                             -->
+<!-- PROCESS STEPS (Como funciona)                                      -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="section section--dark" id="process">
+<section class="section section--dark" id="how">
     <div class="container">
         <div class="section-header text-center fade-in">
-            <div class="section-label">How It Works</div>
-            <h2 class="section-title">Process Steps</h2>
+            <div class="section-label-pink">COMO FUNCIONA</div>
+            <h2 class="section-title">Etapas do Processo</h2>
         </div>
         
         <div class="process-grid fade-in">
             <div class="process-card">
                 <div class="process-number">1</div>
-                <h3>Data Analysis</h3>
+                <h3>Análise de dados</h3>
                 <p>
-                    We connect to your existing data sources (ERP, POS, WMS) and build 
-                    a clean, attribute-rich dataset. Our model automatically handles 
-                    missing values and outliers.
+                    Conectamos às suas fontes de dados existentes — ERP, sistemas de ponto de 
+                    venda (POS), sistemas de armazém — e construímos um conjunto de dados limpo 
+                    e rico em atributos. Nosso modelo trata automaticamente valores ausentes, 
+                    outliers e o alinhamento temporal dos dados. 
+                    <span class="text-gradient-pink">Sem alterar nada no banco de dados.</span>
                 </p>
             </div>
             
             <div class="process-card">
                 <div class="process-number">2</div>
-                <h3>Applying Machine Learning</h3>
+                <h3>Aplicação do Machine Learning</h3>
                 <p>
-                    Using advanced techniques like Quantile Regression and Gradient Boosting, 
-                    we train models capable of capturing complex demand patterns. 
-                    Cross-validation ensures robust predictions.
+                    Utilizando técnicas avançadas como Regressão Quantilica e Gradient Boosting, 
+                    treinamos modelos capazes de capturar padrões complexos de demanda. 
+                    <span class="text-gradient-pink">Recomendamos modelos capazes de capturar padrões complexos de demanda.</span>
+                    A validação cruzada garante previsões robustas e confiáveis.
                 </p>
             </div>
             
             <div class="process-card">
                 <div class="process-number">3</div>
-                <h3>Implementation</h3>
+                <h3>Implementação</h3>
                 <p>
-                    Predictions turn into actionable recommendations. We deploy interactive 
-                    dashboards allowing your team to adjust strategies and visualize 
-                    impact in real-time.
+                    As previsões se transformam em recomendações acionáveis. Implementamos 
+                    dashboards interativos com análise de cenários, permitindo que sua equipe 
+                    <span class="text-gradient-pink">ajuste estratégias e visualize o impacto em tempo real.</span>
                 </p>
             </div>
         </div>
@@ -171,40 +174,39 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- CASE STUDY                                                         -->
+<!-- CASE STUDY (Estudo de Caso)                                        -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <section class="section section--dark" id="case-study">
     <div class="container">
-        <div class="section-label fade-in">Case Study</div>
+        <div class="section-label-pink fade-in">ESTUDO DE CASO</div>
         <h2 class="section-title fade-in">
-            Results obtained in the <span class="text-gradient">Women's Fashion</span> sector
+            Resultados obtidos no setor de <span class="text-gradient">Moda Feminina</span>
         </h2>
         <p class="section-subtitle fade-in">
-            A large fashion retailer faced a critical dilemma: chronic overstock 
-            in some regions and stockouts in others. Since partnering with Shift, 
-            they've transformed their inventory planning.
+            Uma grande varejista de moda enfrentava um dilema crítico: <span class="text-gradient-pink">excesso recorrente de estoque em algumas regiões e rupturas em outras.</span> 
+            A empresa recorreu à Shift para transformar seu planejamento de estoque.
         </p>
 
         <div class="case-grid fade-in">
             <div class="case-card challenge-card">
                 <div class="case-header">
-                    <h3>Challenge</h3>
+                    <h3>Desafio</h3>
                 </div>
                 <ul class="case-list">
-                    <li>Millions in working capital immobilized in slow-moving stock.</li>
-                    <li>Manual planning took months to assemble the new collection.</li>
-                    <li>Replenishment far exceeded real demand in several stores.</li>
+                    <li>Milhões em capital de giro imobilizados em estoques de baixa rotatividade.</li>
+                    <li>O planejamento manual demorava meses para conseguir montar a nova coleção.</li>
+                    <li>Reposição muito acima da demanda real em diversas lojas.</li>
                 </ul>
             </div>
 
             <div class="case-card solution-card">
                 <div class="case-header">
-                    <h3>Solution</h3>
+                    <h3>Solução</h3>
                 </div>
                 <ul class="case-list">
-                    <li>Developed a demand forecasting model at the SKU-Store level.</li>
-                    <li>Automated allocation based on real-time sales probability.</li>
-                    <li>Implemented a replenishment system that adapts to trends.</li>
+                    <li>Implementamos previsão probabilística para quantificar a incerteza da demanda.</li>
+                    <li>Otimizamos os níveis de estoque por filial com base em metas de nível de serviço.</li>
+                    <li>Implantamos dashboards em tempo real para monitoramento contínuo.</li>
                 </ul>
             </div>
         </div>
@@ -212,32 +214,31 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- IMPACT                                                             -->
+<!-- IMPACT (Impacto)                                                   -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <section class="section section--dark" id="impact">
     <div class="container">
         <div class="section-header text-center fade-in">
-            <div class="section-label">The Impact</div>
-            <h2 class="section-title">Measurable Results</h2>
+            <h2 class="section-title">Impacto</h2>
         </div>
         
         <div class="impact-grid fade-in">
             <div class="impact-item">
-                <div class="impact-value text-gradient">-20%</div>
-                <div class="impact-label">Overstock</div>
-                <div class="impact-desc">Reduction in excess inventory in the first 6 months.</div>
+                <div class="impact-value text-gradient-pink">55%</div>
+                <div class="impact-label">Sobras reduzidas</div>
+                <div class="impact-desc">Estoque excedente eliminado enquanto se mantêm os níveis de serviço</div>
             </div>
             
             <div class="impact-item">
-                <div class="impact-value text-gradient">+15%</div>
-                <div class="impact-label">Sales</div>
-                <div class="impact-desc">Increase in full-price sales availability.</div>
+                <div class="impact-value text-gradient-pink">95%</div>
+                <div class="impact-label">Taxa de preenchimento</div>
+                <div class="impact-desc">Alta disponibilidade de produtos mantida de forma consistente</div>
             </div>
             
             <div class="impact-item">
-                <div class="impact-value text-gradient">2 Days</div>
-                <div class="impact-label">Planning Cycle</div>
-                <div class="impact-desc">Down from 3 weeks of manual spreadsheet work.</div>
+                <div class="impact-value text-gradient-pink">+90%</div>
+                <div class="impact-label">Precisão do modelo</div>
+                <div class="impact-desc">A pontuação R² supera significativamente as linhas de base anteriores</div>
             </div>
         </div>
     </div>
@@ -246,56 +247,61 @@
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <!-- TEAM                                                               -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="section section--dark" id="team">
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- TEAM                                                               -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="section" id="team">
+    <canvas id="team-canvas"></canvas>
     <div class="container">
         <div class="section-header text-center fade-in">
-            <div class="section-label">Our Team</div>
-            <h2 class="section-title">Meet the Experts</h2>
+            <div class="section-label-cyan">CONHEÇA O TIME</div>
+            <h2 class="section-title">Os responsáveis pela <span class="text-gradient-cyan">mudança</span></h2>
         </div>
         
         <div class="team-grid fade-in">
             <div class="team-card">
                 <div class="team-avatar">
-                    <img src="assets/DNrs.jpeg" alt="Founder">
+                   <!-- Using existing asset provided in previous index.html -->
+                    <img src="assets/DNrs.jpeg" alt="Daniel Ramos">
                 </div>
-                <div class="team-name">Alex Rivera</div>
-                <div class="team-role">CEO & Founder</div>
-                <p class="team-bio">Top Kaggler (Grandmaster) with 10+ years in retail AI optimization.</p>
+                <div class="team-name">Daniel Ramos</div>
+                <div class="team-role">COFUNDADOR E<br>ENGENHEIRO DE PRODUÇÃO</div>
+                <p class="team-bio">É especialista em análise de dados, criação e implementação de modelos de Machine Learning</p>
             </div>
             
             <div class="team-card">
                 <div class="team-avatar">
-                    <img src="assets/JGrs.jpeg" alt="CTO">
+                    <img src="assets/JGrs.jpeg" alt="João Miller">
                 </div>
-                <div class="team-name">Sarah Chen</div>
-                <div class="team-role">CTO</div>
-                <p class="team-bio">Former Lead Engineer at TechGiant, specializing in scalable ML pipelines.</p>
+                <div class="team-name">João Miller</div>
+                <div class="team-role">COFUNDADOR E<br>ENGENHEIRO DE PRODUÇÃO</div>
+                <p class="team-bio">É especialista em análise de dados, criação e implementação de modelos de Machine Learning</p>
             </div>
             
             <div class="team-card">
                 <div class="team-avatar">
-                    <img src="assets/PedrivoRs.jpeg" alt="Data Scientist">
+                    <img src="assets/PedrivoRs.jpeg" alt="Pedro Ivo Bodanese">
                 </div>
-                <div class="team-name">David Kim</div>
-                <div class="team-role">Head of Product</div>
-                <p class="team-bio">Bridging the gap between complex algorithms and user-friendly interfaces.</p>
+                <div class="team-name">Pedro Ivo Bodanese</div>
+                <div class="team-role">COFUNDADOR E<br>ENGENHEIRO DE PRODUÇÃO</div>
+                <p class="team-bio">É especialista em análise de dados, criação e implementação de modelos de Machine Learning</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- CONTACT                                                            -->
+<!-- CONTACT (Vamos trabalhar juntos)                                   -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="section section--dark" id="contact">
+<section class="section section--white" id="contact">
     <div class="container fade-in">
         <div class="cta-box text-center">
-            <h2>Ready to Optimize?</h2>
-            <p>
-                Join the leading companies transforming their inventory management 
-                with Shift's machine learning solutions.
+            <h2 class="cta-title">Vamos trabalhar <span class="text-gradient-pink">juntos!</span></h2>
+            <p class="cta-subtitle">
+                Tem alguma operação precisando de melhorias?<br>
+                Adoraríamos ouvir sobre isso
             </p>
-            <a href="mailto:contact@shift.com" class="btn btn-primary">Start the Conversation</a>
+            <a href="mailto:contact@shift.com" class="btn btn-cta">Entre em contato</a>
         </div>
     </div>
 </section>
@@ -305,11 +311,23 @@
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <footer class="footer">
     <div class="container footer-content">
-        <div class="footer-brand">
-            <img src="assets/logo.png" alt="Shift">
-            <span>Shift</span>
+        <div class="footer-links">
+            <a href="#about">Quem somos</a>
+            <a href="#how">Como funciona</a>
+            <a href="#case-study">Estudo de caso</a>
+            <a href="#privacy">Política de privacidade</a>
         </div>
-        <p>&copy; 2026 Shift. All rights reserved.</p>
+        
+        <div class="footer-socials">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:contact@shift.com"><i class="far fa-envelope"></i></a>
+        </div>
+
+        <div class="footer-brand-right">
+            <img src="assets/logo.png" alt="Shift" class="footer-logo">
+            <div class="footer-copy">&copy; 2026 Shift. All rights reserved.</div>
+        </div>
     </div>
 </footer>
 

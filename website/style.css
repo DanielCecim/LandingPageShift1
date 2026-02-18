@@ -278,6 +278,16 @@ img { max-width: 100%; height: auto; display: block; }
     display: inline-block;
 }
 
+.section-label-pink {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #ec4899; /* Pink-500 */
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
 .section-title {
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 800;
@@ -368,9 +378,16 @@ img { max-width: 100%; height: auto; display: block; }
     opacity: 0.7;
 }
 
-.icon-ring::after { content: '⚙️'; filter: grayscale(1) brightness(2); }
-.icon-chart::after { content: '📊'; filter: grayscale(1) brightness(2); }
-.icon-dash::after { content: '🖥️'; filter: grayscale(1) brightness(2); }
+.feature-icon::after {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.icon-ring::after { content: '\f111'; /* circle (using as ring/dot) */ color: #ec4899; } 
+.icon-chart::after { content: '\f080'; /* chart-bar */ color: #6366f1; }
+.icon-dash::after { content: '\f201'; /* chart-line */ color: #8b5cf6; }
 
 .feature-content h3 {
     font-size: 1.1rem;
@@ -518,151 +535,249 @@ img { max-width: 100%; height: auto; display: block; }
     margin: 0 auto;
 }
 
-/* ── Team (Dark Mode) ──────────────────────────────────────────────── */
+/* ── New Gradient Utilities ───────────────────────────────────────── */
+.section-label-cyan {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #22d3ee; /* Cyan-400 */
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.text-gradient-cyan {
+    background: linear-gradient(135deg, #22d3ee 0%, #0ea5e9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.text-gradient-pink {
+    background: linear-gradient(135deg, #ec4899 0%, #d946ef 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ── Team (Matches User Photo) ────────────────────────────────────── */
+#team {
+    position: relative;
+    background: #1e002e; /* Dark violet matches Hero */
+    /* Subtle dimmer gradient overlay */
+    background-image: radial-gradient(circle at 50% 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%);
+    overflow: hidden;
+}
+
+#team-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+#team > .container {
+    position: relative;
+    z-index: 2;
+}
+
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 3rem;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .team-card {
+    background: #f8fafc; /* White/Light Grey Card */
+    border-radius: 30px;
+    padding: 3rem 2rem;
     text-align: center;
-    padding: 2rem;
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.05);
-    border-radius: 20px;
-    transition: 0.3s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
 }
 
 .team-card:hover {
-    background: rgba(255,255,255,0.05);
+    transform: translateY(-10px);
 }
 
 .team-avatar {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     margin: 0 auto 1.5rem;
     border-radius: 50%;
     overflow: hidden;
-    border: 3px solid rgba(14, 165, 233, 0.2);
-    background: var(--bg-secondary);
+    /* No border in example, or maybe simple white? */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 .team-avatar img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
 }
 
 .team-name {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--text-main);
-    margin-bottom: 0.25rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0f172a; /* Dark text */
+    margin-bottom: 0.5rem;
 }
 
 .team-role {
-    color: var(--primary);
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
+    color: #db2777; /* Pink/Magenta */
+    font-size: 0.85rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
+    display: block;
 }
 
 .team-bio {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    line-height: 1.5;
+    font-size: 0.95rem;
+    color: #64748b; /* Slate-500 */
+    line-height: 1.6;
+    max-width: 260px;
+    margin: 0 auto;
 }
 
-/* ── Contact & Footer ─────────────────────────────────────────────── */
+/* ── Contact (White Section "Vamos trabalhar juntos!") ──────────────── */
+.section--white {
+    background: #ffffff;
+    color: #0f172a;
+    padding: 8rem 0;
+}
+
 .cta-box {
-    background: linear-gradient(135deg, rgba(99,102,241,0.1) 0%, rgba(236,72,153,0.1) 100%);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 4rem 2rem;
-    border-radius: 32px;
+    background: transparent;
+    border: none;
+    padding: 0;
     max-width: 800px;
     margin: 0 auto;
 }
 
-.cta-box h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    background: var(--grad-text);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.cta-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+    color: #4f46e5; /* Indigo base */
+    line-height: 1.1;
 }
 
-.cta-box p {
-    font-size: 1.2rem;
-    color: var(--text-muted);
-    margin-bottom: 2rem;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
+.cta-subtitle {
+    font-size: 1.5rem;
+    color: #1e293b;
+    margin-bottom: 3rem;
+    line-height: 1.5;
+    font-weight: 500;
 }
 
+.btn-cta {
+    background: linear-gradient(90deg, #4338ca 0%, #3b82f6 100%);
+    color: white;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(59, 130, 246, 0.5);
+}
+
+/* ── Footer ("Shift" Dark Section) ────────────────────────────────── */
 .footer {
-    border-top: 1px solid rgba(255,255,255,0.05);
-    padding: 2rem 0;
-    background: var(--bg-dark);
-    margin-top: auto;
+    background: #02020a; /* Deep Black/Blue */
+    padding: 4rem 0;
+    border-top: none;
+    color: #fff;
 }
 
 .footer-content {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-}
-
-.footer-brand {
-    display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer-links a {
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-socials a {
+    color: #fff;
+    font-size: 1.5rem;
+    transition: transform 0.2s;
+}
+
+.footer-socials a:hover {
+    transform: scale(1.1);
+    color: #a855f7;
+}
+
+.footer-brand-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     gap: 0.5rem;
-    font-weight: 700;
-    color: var(--text-main);
 }
 
-.footer-brand img {
-    height: 24px;
-    width: auto;
+.footer-logo {
+    width: 40px;
+    height: auto;
 }
 
-.footer p {
-    color: var(--text-muted);
-    font-size: 0.9rem;
+.footer-copy {
+    color: #64748b;
+    font-size: 0.85rem;
 }
 
-/* ── Impact Item (Added for consistency) ──────────────────────────── */
-.impact-item {
-    transition: transform 0.3s ease;
-}
-
-.impact-item:hover {
-    transform: translateY(-5px);
-}
-
-
-/* ── Responsive ───────────────────────────────────────────────────── */
-@media (max-width: 900px) {
-    .split-layout, .case-grid, .impact-grid, .team-grid {
-        grid-template-columns: 1fr;
+@media (max-width: 768px) {
+    .cta-title { font-size: 2.5rem; }
+    .cta-subtitle { font-size: 1.2rem; }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 3rem;
     }
-    .hero-title { font-size: 3rem; }
-}
-
-@media (max-width: 480px) {
-    .nav-links, .nav-btn { display: none; }
-    .nav-toggle { display: flex; }
     
-    .hero-main-logo { width: 80px; height: 80px; }
-    .hero-title { font-size: 2.2rem; }
+    .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
     
-    .impact-value { font-size: 3.5rem; }
+    .footer-brand-right {
+        align-items: center;
+    }
 }
 
 /* ── Animations ───────────────────────────────────────────────────── */
@@ -744,6 +859,15 @@ img { max-width: 100%; height: auto; display: block; }
         gap: 0.8rem;
         text-align: center;
     }
+}
+
+/* ── Impact Item (Restored) ───────────────────────────────────────── */
+.impact-item {
+    transition: transform 0.3s ease;
+}
+
+.impact-item:hover {
+    transform: translateY(-5px);
 }
 
 @media (max-width: 480px) {
