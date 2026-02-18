@@ -986,16 +986,22 @@ img { max-width: 100%; height: auto; display: block; }
         display: flex;
         flex-direction: column;
         justify-content: center;
-        /* Ensure it doesn't overflow if possible */
         overflow: hidden; 
     }
 
+    /* Apply blur via CSS since mobile Safari caps canvas filter blur */
+    #bg-canvas,
+    #team-canvas {
+        filter: blur(60px);
+        -webkit-filter: blur(60px);
+    }
+
     .hero-slide {
-        height: 100vh; /* Force full viewport height */
+        height: 100vh;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
-        overflow: hidden; /* Prevent scrolling within the slide if possible */
+        overflow: hidden;
     }
 
     /* Hero Content Scaling */
