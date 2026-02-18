@@ -145,9 +145,10 @@ function initWaves() {
     const ctx = canvas.getContext('2d');
     const simplex = new SimplexNoise();
 
-    let w = canvas.width = window.innerWidth;
-    let h = canvas.height = window.innerHeight;
+    let w, h;
     let nt = 0;
+    let animId = null;
+    let isVisible = true;
 
     const waveColors = [
         "#ff0080", "#7928ca", "#4f46e5", "#00d4ff", "#ff0080"
@@ -156,20 +157,27 @@ function initWaves() {
     const waveWidth = 200;
     let blur = 30;
     const waveOpacity = 0.5;
+    const isMobile = () => window.innerWidth < 768;
+    const step = isMobile() ? 20 : 10;
 
     function updateDimensions() {
         w = canvas.width = window.innerWidth;
         h = canvas.height = window.innerHeight;
-        
-        if (window.innerWidth < 768) {
-            blur = 10000; 
-        } else {
-            blur = 30;
-        }
+        blur = isMobile() ? 10000 : 30;
     }
 
     window.addEventListener('resize', updateDimensions);
     updateDimensions();
+
+    // Pause when not visible
+    const section = canvas.closest('.slide');
+    if (section) {
+        const visObs = new IntersectionObserver(entries => {
+            isVisible = entries[0].isIntersecting;
+            if (isVisible && !animId) render();
+        }, { threshold: 0.05 });
+        visObs.observe(section);
+    }
 
     const drawWave = (n) => {
         nt += 0.003;
@@ -178,7 +186,7 @@ function initWaves() {
             ctx.lineWidth = waveWidth;
             ctx.strokeStyle = waveColors[i % waveColors.length];
 
-            for (let x = 0; x < w; x += 5) {
+            for (let x = 0; x < w; x += step) {
                 const y = simplex.noise3D(x / 600, 0.3 * i, nt) * 300;
                 ctx.lineTo(x, y + h * 0.5);
             }
@@ -188,13 +196,14 @@ function initWaves() {
     };
 
     const render = () => {
+        if (!isVisible) { animId = null; return; }
         ctx.fillStyle = "#1e002e";
         ctx.globalAlpha = waveOpacity;
         ctx.fillRect(0, 0, w, h);
         ctx.filter = `blur(${blur}px)`;
 
-        drawWave(6);
-        requestAnimationFrame(render);
+        drawWave(5);
+        animId = requestAnimationFrame(render);
     };
 
     render();
@@ -210,9 +219,10 @@ function initTeamWaves() {
     const ctx = canvas.getContext('2d');
     const simplex = new SimplexNoise();
 
-    let w = canvas.width = canvas.parentElement.offsetWidth;
-    let h = canvas.height = canvas.parentElement.offsetHeight;
+    let w, h;
     let nt = 0;
+    let animId = null;
+    let isVisible = false;
 
     const waveColors = [
         "#4c1d95", "#0f766e", "#5b21b6", "#be185d",
@@ -220,22 +230,27 @@ function initTeamWaves() {
     ];
 
     const waveWidth = 100;
-
     let blur = 25;
     const waveOpacity = 0.35;
 
     function updateTeamDimensions() {
         w = canvas.width = canvas.parentElement.offsetWidth;
         h = canvas.height = canvas.parentElement.offsetHeight;
-        if (window.innerWidth < 768) {
-            blur = 10000; 
-        } else {
-            blur = 25;
-        }
+        blur = window.innerWidth < 768 ? 10000 : 25;
     }
 
     window.addEventListener('resize', updateTeamDimensions);
     updateTeamDimensions();
+
+    // Pause when not visible
+    const section = canvas.closest('.slide');
+    if (section) {
+        const visObs = new IntersectionObserver(entries => {
+            isVisible = entries[0].isIntersecting;
+            if (isVisible && !animId) render();
+        }, { threshold: 0.05 });
+        visObs.observe(section);
+    }
 
     const drawWave = (n) => {
         nt += 0.0025;
@@ -244,7 +259,7 @@ function initTeamWaves() {
             ctx.lineWidth = waveWidth;
             ctx.strokeStyle = waveColors[i % waveColors.length];
 
-            for (let x = 0; x < w; x += 30) {
+            for (let x = 0; x < w; x += 40) {
                 const y = simplex.noise3D(x / 400, 0.2 * i, nt) * 200;
                 ctx.lineTo(x, y + h * 0.5);
             }
@@ -254,13 +269,14 @@ function initTeamWaves() {
     };
 
     const render = () => {
+        if (!isVisible) { animId = null; return; }
         ctx.clearRect(0, 0, w, h);
 
         ctx.filter = `blur(${blur}px)`;
         ctx.globalAlpha = waveOpacity;
 
-        drawWave(10);
-        requestAnimationFrame(render);
+        drawWave(7);
+        animId = requestAnimationFrame(render);
     };
 
     render();

@@ -8,8 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js" defer></script>
 </head>
 <body>
 
@@ -47,7 +47,7 @@
 <section class="slide hero-slide" data-theme="light">
     <div class="brand-header">
         <div class="container text-center slide-content">
-            <video src="assets/logo.mp4" class="brand-logo" autoplay loop muted playsinline></video>
+            <video src="assets/logo.mp4" class="brand-logo" autoplay loop muted playsinline preload="auto"></video>
             <div class="brand-name">Shift</div>
         </div>
     </div>

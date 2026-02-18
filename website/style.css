@@ -69,8 +69,9 @@ img { max-width: 100%; height: auto; display: block; }
     background: rgba(255, 255, 255, 0.85); /* Slightly more transparent initially */
     backdrop-filter: blur(20px);
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     border-bottom: 1px solid transparent;
+    will-change: background, box-shadow;
 }
 
 .nav.scrolled {
