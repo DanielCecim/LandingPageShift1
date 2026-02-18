@@ -145,28 +145,22 @@ function initWaves() {
     const ctx = canvas.getContext('2d');
     const simplex = new SimplexNoise();
 
-    let w, h, waveWidth, blur, amplitude, noiseScale, stepSize;
+    let w = canvas.width = window.innerWidth;
+    let h = canvas.height = window.innerHeight;
+    let nt = 0;
 
     const waveColors = [
         "#ff0080", "#7928ca", "#4f46e5", "#00d4ff", "#ff0080"
     ];
-    const waveOpacity = 0.5;
-    let nt = 0;
 
-    // Scale wave params to viewport so mobile and desktop look similar
-    function updateParams() {
+    const waveWidth = 200;
+    const blur = 30;
+    const waveOpacity = 0.5;
+
+    window.addEventListener('resize', () => {
         w = canvas.width = window.innerWidth;
         h = canvas.height = window.innerHeight;
-        const scale = Math.min(w / 1400, 1); // 1400 = reference desktop width
-        waveWidth = 200 * scale;
-        blur = Math.round(30 * scale);
-        amplitude = 300 * scale;
-        noiseScale = 600 * scale;
-        stepSize = Math.max(3, Math.round(5 / scale));
-    }
-
-    updateParams();
-    window.addEventListener('resize', updateParams);
+    });
 
     const drawWave = (n) => {
         nt += 0.003;
@@ -175,8 +169,8 @@ function initWaves() {
             ctx.lineWidth = waveWidth;
             ctx.strokeStyle = waveColors[i % waveColors.length];
 
-            for (let x = 0; x < w; x += stepSize) {
-                const y = simplex.noise3D(x / noiseScale, 0.3 * i, nt) * amplitude;
+            for (let x = 0; x < w; x += 5) {
+                const y = simplex.noise3D(x / 600, 0.3 * i, nt) * 300;
                 ctx.lineTo(x, y + h * 0.5);
             }
             ctx.stroke();
@@ -207,27 +201,23 @@ function initTeamWaves() {
     const ctx = canvas.getContext('2d');
     const simplex = new SimplexNoise();
 
-    let w, h, waveWidth, blur, amplitude, noiseScale;
+    let w = canvas.width = canvas.parentElement.offsetWidth;
+    let h = canvas.height = canvas.parentElement.offsetHeight;
     let nt = 0;
 
     const waveColors = [
         "#4c1d95", "#0f766e", "#5b21b6", "#be185d",
         "#4338ca", "#1d4ed8", "#701a75"
     ];
+
+    const waveWidth = 100;
+    const blur = 25;
     const waveOpacity = 0.35;
 
-    function updateParams() {
+    window.addEventListener('resize', () => {
         w = canvas.width = canvas.parentElement.offsetWidth;
         h = canvas.height = canvas.parentElement.offsetHeight;
-        const scale = Math.min(w / 1400, 1);
-        waveWidth = 100 * scale;
-        blur = Math.round(25 * scale);
-        amplitude = 200 * scale;
-        noiseScale = 400 * scale;
-    }
-
-    updateParams();
-    window.addEventListener('resize', updateParams);
+    });
 
     const drawWave = (n) => {
         nt += 0.0025;
@@ -237,7 +227,7 @@ function initTeamWaves() {
             ctx.strokeStyle = waveColors[i % waveColors.length];
 
             for (let x = 0; x < w; x += 30) {
-                const y = simplex.noise3D(x / noiseScale, 0.2 * i, nt) * amplitude;
+                const y = simplex.noise3D(x / 400, 0.2 * i, nt) * 200;
                 ctx.lineTo(x, y + h * 0.5);
             }
             ctx.stroke();
