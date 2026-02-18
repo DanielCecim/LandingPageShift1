@@ -948,18 +948,25 @@ img { max-width: 100%; height: auto; display: block; }
 
     .nav-inner { padding: 0 1rem; }
 
-    /* Brand header - Ultra Compact */
-    .brand-logo {
-        width: 90px;
-        height: 90px;
-        margin-bottom: 0;
+    /* Make nav clearly visible on mobile */
+    .nav {
+        background: rgba(255, 255, 255, 0.98);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     }
 
-    .brand-name { font-size: 1.75rem; line-height: 1; }
+    /* Brand header - Ultra Compact */
+    .brand-logo {
+        width: 80px;
+        height: 80px;
+        margin-bottom: -0.25rem;
+    }
+
+    .brand-name { font-size: 1.5rem; line-height: 1; margin-bottom: 0.25rem; }
 
     .hero-slide .brand-header {
-        padding-top: calc(var(--nav-height) + 0.5rem);
-        padding-bottom: 0.5rem;
+        padding-top: calc(var(--nav-height) + 0.25rem);
+        padding-bottom: 0.25rem;
         flex-shrink: 0;
         min-height: auto;
     }
@@ -1401,6 +1408,7 @@ img { max-width: 100%; height: auto; display: block; }
         overflow-y: auto;
     }
 
+    /* All slides EXCEPT hero get auto height */
     .slide {
         height: auto;
         min-height: auto;
@@ -1408,8 +1416,12 @@ img { max-width: 100%; height: auto; display: block; }
         overflow: visible;
     }
 
-    /* Hero slide — no forced height on mobile */
-    .hero-slide { min-height: auto; }
+    /* HERO slide keeps full viewport height */
+    .hero-slide {
+        height: 100vh;
+        min-height: 100vh;
+        overflow: hidden;
+    }
 
     /* Show content immediately — no animation delay on mobile */
     .slide-content {
