@@ -4,6 +4,27 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // ── Force autoplay on mobile for muted videos ───────────────────
+    const video = document.querySelector('video.brand-logo');
+    if (video) {
+        video.muted = true;
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {
+                // Autoplay blocked — play on first user interaction
+                const tryPlay = () => {
+                    video.play();
+                    document.removeEventListener('touchstart', tryPlay);
+                    document.removeEventListener('click', tryPlay);
+                };
+                document.addEventListener('touchstart', tryPlay, { once: true });
+                document.addEventListener('click', tryPlay, { once: true });
+            });
+        }
+        // Remove native controls to prevent play button overlay
+        video.removeAttribute('controls');
+    }
+
     // ── Slider & Slides ──────────────────────────────────────────────
     const slider = document.getElementById('slider');
     const slides = Array.from(document.querySelectorAll('.slide'));
