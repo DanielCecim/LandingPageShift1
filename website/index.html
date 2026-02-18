@@ -8,116 +8,117 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
 </head>
 <body>
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <!-- NAVIGATION                                                         -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<nav class="nav" id="nav">
+<nav class="nav fade-in">
     <div class="nav-inner">
-        <a href="#hero" class="nav-logo">
+        <a href="#" class="nav-logo">
             <img src="assets/logo.png" alt="Shift" class="nav-logo-img">
-            <span class="nav-logo-text">Shift</span>
+            <!-- Icon only in nav usually, but text can be added if needed -->
+            <!-- <span class="nav-logo-text">Shift</span> -->
         </a>
-        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#process">How it Works</a></li>
+            <li><a href="#case-study">Case Study</a></li>
+        </ul>
+        
+        <a href="#contact" class="nav-btn">Get in Touch</a>
+        
+        <button class="nav-toggle" aria-label="Toggle navigation">
             <span></span><span></span><span></span>
         </button>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#about">About</a></li>
-            <li><a href="#how-it-works">How It Works</a></li>
-            <li><a href="#case-study">Case Study</a></li>
-            <li><a href="#team">Team</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
     </div>
 </nav>
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- HERO                                                               -->
+<!-- BRAND HEADER (White Section)                                       -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="hero" id="hero">
-    <div class="hero-bg">
-        <div class="grad-orb orb-1"></div>
-        <div class="grad-orb orb-2"></div>
-    </div>
-    <div class="hero-content fade-in">
-        <img src="assets/logo.png" alt="Shift" class="hero-logo">
-        <h1 class="hero-title">
-            Machine Learning Optimization System for Enterprises
-        </h1>
-        <p class="hero-subtitle">
-            Shift builds intelligent systems that transform how companies make
-            operational decisions — from inventory management to demand forecasting
-            and beyond.
-        </p>
-        <div class="hero-cta">
-            <a href="#case-study" class="btn btn-primary">View Case Study</a>
-            <a href="#contact" class="btn btn-secondary">Book Demo</a>
-        </div>
-    </div>
-    <div class="hero-scroll-indicator">
-        <div class="scroll-line"></div>
+<section class="brand-header fade-in">
+    <div class="container text-center">
+        <img src="assets/logo.png" alt="Shift Logo" class="brand-logo">
+        <div class="brand-name">Shift</div>
     </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- HERO SECTION                                                       -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<header class="hero">
+    <canvas id="bg-canvas"></canvas>
+    
+    <div class="hero-content fade-in">
+        <h1 class="hero-title">
+            Inventory Optimization<br>with Machine Learning
+        </h1>
+        
+        <p class="hero-subtitle">
+            Shift builds commercial planning systems based on data training, 
+            significantly reducing stock errors and maximizing profitability.
+        </p>
+        
+        <div class="hero-cta">
+            <a href="#process" class="btn btn-primary">See how it works</a>
+            <a href="#contact" class="btn btn-secondary">Get in touch</a>
+        </div>
+        </div>
+    </div>
+</header>
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- ABOUT                                                              -->
+<!-- ABOUT SECTION                                                      -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="section" id="about">
+<section class="section section--dark" id="about">
     <div class="container">
         <div class="split-layout">
-            <div class="split-content fade-in">
-                <div class="section-label">About Shift</div>
+            <div class="split-text fade-in">
+                <div class="section-label">Who We Are</div>
                 <h2 class="section-title">
-                    Turning Data Into<br><span class="text-gradient">Competitive Advantage</span>
+                    Shift was born with a purpose: <br>
+                    <span class="text-gradient">Transforming data into competitive advantage</span>
                 </h2>
-                <div class="section-text">
+                <div class="section-desc">
                     <p>
-                        Shift is a machine learning consultancy that helps enterprises
-                        optimize their most complex operational decisions. We specialize
-                        in building end-to-end ML systems — from data engineering and
-                        model development to interactive dashboards that put insights
-                        directly in decision-makers' hands.
+                        Shift is a startup specialized in machine learning that helps companies optimize 
+                        complex operational decisions with data science and artificial intelligence.
                     </p>
                     <p>
-                        Our approach combines rigorous statistical methods with modern
-                        machine learning to deliver solutions that are not just accurate,
-                        but actionable. We don't just predict — we recommend, quantify
-                        uncertainty, and measure impact.
+                        We develop end-to-end ML systems. We don't just predict — we recommend actions, 
+                        quantify risks, and measure impact. 
+                        We integrate machine learning into real business processes to <strong>increase efficiency, 
+                        reduce costs, and improve results.</strong>
                     </p>
                 </div>
             </div>
             
-            <div class="feature-list fade-in delay-200">
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
-                    </div>
-                    <div class="feature-info">
-                        <h4>Probabilistic Forecasting</h4>
-                        <p>Calibrated confidence intervals you can trust for decision-making</p>
+            <div class="split-cards fade-in delay-200">
+                <div class="feature-card">
+                    <div class="feature-icon icon-ring"></div>
+                    <div class="feature-content">
+                        <h3>Data Engineering</h3>
+                        <p>Robust pipelines ensuring data quality and availability.</p>
                     </div>
                 </div>
                 
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                    </div>
-                    <div class="feature-info">
-                        <h4>Real-Time Dashboards</h4>
-                        <p>Interactive tools that let your team explore scenarios and adjust strategies</p>
+                <div class="feature-card">
+                    <div class="feature-icon icon-chart"></div>
+                    <div class="feature-content">
+                        <h3>Probabilistic Forecasting</h3>
+                        <p>Confidence intervals you can trust for decision-making.</p>
                     </div>
                 </div>
                 
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                    </div>
-                    <div class="feature-info">
-                        <h4>Fast Implementation</h4>
-                        <p>From data to deployed solution in weeks, not months</p>
+                <div class="feature-card">
+                    <div class="feature-icon icon-dash"></div>
+                    <div class="feature-content">
+                        <h3>Interactive Dashboards</h3>
+                        <p>Tools that let your team explore scenarios in real-time.</p>
                     </div>
                 </div>
             </div>
@@ -126,38 +127,43 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- HOW IT WORKS                                                       -->
+<!-- PROCESS / HOW IT WORKS                                             -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="section section--alt" id="how-it-works">
+<section class="section section--dark" id="process">
     <div class="container">
-        <div class="section-label fade-in">Process</div>
-        <h2 class="section-title fade-in">How It Works</h2>
-        <div class="steps-grid">
-            <div class="step-card fade-in">
-                <div class="step-number">01</div>
-                <h3 class="step-title">Data Integration</h3>
-                <p class="step-desc">
-                    We connect to your existing data sources — ERP, POS, warehouse
-                    systems — and build a clean, feature-rich dataset. Our pipeline
-                    handles missing values, outliers, and temporal alignment automatically.
+        <div class="section-header text-center fade-in">
+            <div class="section-label">How It Works</div>
+            <h2 class="section-title">Process Steps</h2>
+        </div>
+        
+        <div class="process-grid fade-in">
+            <div class="process-card">
+                <div class="process-number">1</div>
+                <h3>Data Analysis</h3>
+                <p>
+                    We connect to your existing data sources (ERP, POS, WMS) and build 
+                    a clean, attribute-rich dataset. Our model automatically handles 
+                    missing values and outliers.
                 </p>
             </div>
-            <div class="step-card fade-in">
-                <div class="step-number">02</div>
-                <h3 class="step-title">ML Model Development</h3>
-                <p class="step-desc">
-                    Using advanced techniques like Quantile Regression and Gradient
-                    Boosting, we train models that capture complex demand patterns.
-                    Cross-validation ensures robust, reliable predictions.
+            
+            <div class="process-card">
+                <div class="process-number">2</div>
+                <h3>Applying Machine Learning</h3>
+                <p>
+                    Using advanced techniques like Quantile Regression and Gradient Boosting, 
+                    we train models capable of capturing complex demand patterns. 
+                    Cross-validation ensures robust predictions.
                 </p>
             </div>
-            <div class="step-card fade-in">
-                <div class="step-number">03</div>
-                <h3 class="step-title">Decision Optimization</h3>
-                <p class="step-desc">
-                    Predictions become actionable recommendations. We deploy interactive
-                    dashboards with scenario analysis, letting your team adjust strategies
-                    and see the impact in real time.
+            
+            <div class="process-card">
+                <div class="process-number">3</div>
+                <h3>Implementation</h3>
+                <p>
+                    Predictions turn into actionable recommendations. We deploy interactive 
+                    dashboards allowing your team to adjust strategies and visualize 
+                    impact in real-time.
                 </p>
             </div>
         </div>
@@ -167,78 +173,72 @@
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <!-- CASE STUDY                                                         -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="section section--alt" id="case-study">
+<section class="section section--dark" id="case-study">
     <div class="container">
-        <div class="section-label fade-in">Success Story</div>
+        <div class="section-label fade-in">Case Study</div>
         <h2 class="section-title fade-in">
-            Case Study: Fashion Retail
+            Results obtained in the <span class="text-gradient">Women's Fashion</span> sector
         </h2>
         <p class="section-subtitle fade-in">
-            A leading fashion retailer faced a critical dilemma: chronic overstock in some regions 
-            and stockouts in others. They turned to Shift to transform their inventory planning.
+            A large fashion retailer faced a critical dilemma: chronic overstock 
+            in some regions and stockouts in others. Since partnering with Shift, 
+            they've transformed their inventory planning.
         </p>
 
         <div class="case-grid fade-in">
             <div class="case-card challenge-card">
                 <div class="case-header">
-                    <span class="case-icon text-red">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                    </span>
-                    <h3>The Challenge</h3>
+                    <h3>Challenge</h3>
                 </div>
                 <ul class="case-list">
-                    <li>Millions in working capital tied up in slow-moving inventory.</li>
-                    <li>Manual planning couldn't handle sporadic demand for low-volume products.</li>
-                    <li>Stocking multiple times more than actual demand across all stores.</li>
+                    <li>Millions in working capital immobilized in slow-moving stock.</li>
+                    <li>Manual planning took months to assemble the new collection.</li>
+                    <li>Replenishment far exceeded real demand in several stores.</li>
                 </ul>
             </div>
 
             <div class="case-card solution-card">
                 <div class="case-header">
-                    <span class="case-icon text-green">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-                    </span>
-                    <h3>The Solution</h3>
+                    <h3>Solution</h3>
                 </div>
                 <ul class="case-list">
-                     <li>Implemented probabilistic forecasting to quantify demand uncertainty.</li>
-                     <li>Optimized inventory levels per store/SKU based on service level targets.</li>
-                     <li>Deployed real-time dashboards for continuous monitoring.</li>
+                    <li>Developed a demand forecasting model at the SKU-Store level.</li>
+                    <li>Automated allocation based on real-time sales probability.</li>
+                    <li>Implemented a replenishment system that adapts to trends.</li>
                 </ul>
             </div>
         </div>
+    </div>
+</section>
 
-        <div class="results-wrapper fade-in delay-200">
-            <h3 class="results-heading">The Impact</h3>
-            <div class="results-grid">
-                <div class="result-card">
-                    <div class="result-value">55%</div>
-                    <div class="result-label">Overstock Reduction</div>
-                    <div class="result-desc">Excess inventory eliminated while maintaining service levels</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-value">95%</div>
-                    <div class="result-label">Fill Rate</div>
-                    <div class="result-desc">High product availability maintained consistently</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-value">83%</div>
-                    <div class="result-label">Model Accuracy</div>
-                    <div class="result-desc">R² score significantly outperforming previous baselines</div>
-                </div>
-                <div class="result-card">
-                    <div class="result-value">4 wks</div>
-                    <div class="result-label">Deployment</div>
-                    <div class="result-desc">Rapid implementation from data ingestion to value</div>
-                </div>
-            </div>
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- IMPACT                                                             -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="section section--dark" id="impact">
+    <div class="container">
+        <div class="section-header text-center fade-in">
+            <div class="section-label">The Impact</div>
+            <h2 class="section-title">Measurable Results</h2>
         </div>
-
-        <div class="case-quote fade-in">
-            <blockquote>
-                "Shift identified R$ 156k in recoverable capital immediately. It tells us exactly 
-                how much to stock per product to maximize profitability."
-            </blockquote>
+        
+        <div class="impact-grid fade-in">
+            <div class="impact-item">
+                <div class="impact-value text-gradient">-20%</div>
+                <div class="impact-label">Overstock</div>
+                <div class="impact-desc">Reduction in excess inventory in the first 6 months.</div>
+            </div>
+            
+            <div class="impact-item">
+                <div class="impact-value text-gradient">+15%</div>
+                <div class="impact-label">Sales</div>
+                <div class="impact-desc">Increase in full-price sales availability.</div>
+            </div>
+            
+            <div class="impact-item">
+                <div class="impact-value text-gradient">2 Days</div>
+                <div class="impact-label">Planning Cycle</div>
+                <div class="impact-desc">Down from 3 weeks of manual spreadsheet work.</div>
+            </div>
         </div>
     </div>
 </section>
@@ -246,43 +246,39 @@
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <!-- TEAM                                                               -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="section section--alt" id="team">
+<section class="section section--dark" id="team">
     <div class="container">
-        <div class="section-label fade-in">Team</div>
-        <h2 class="section-title fade-in">The People Behind Shift</h2>
-        <div class="team-grid">
-            <div class="team-card fade-in">
+        <div class="section-header text-center fade-in">
+            <div class="section-label">Our Team</div>
+            <h2 class="section-title">Meet the Experts</h2>
+        </div>
+        
+        <div class="team-grid fade-in">
+            <div class="team-card">
                 <div class="team-avatar">
-                   <img src="assets/DNrs.jpeg" alt="Daniel Ramos" />
+                    <img src="assets/DNrs.jpeg" alt="Founder">
                 </div>
-                <h3 class="team-name">Daniel Ramos</h3>
-                <p class="team-role">Co-Founder & ML Engineer</p>
-                <p class="team-bio">
-                    Background in applied machine learning and statistical modeling.
-                    Passionate about turning complex data into clear business value.
-                </p>
+                <div class="team-name">Alex Rivera</div>
+                <div class="team-role">CEO & Founder</div>
+                <p class="team-bio">Top Kaggler (Grandmaster) with 10+ years in retail AI optimization.</p>
             </div>
-            <div class="team-card fade-in">
+            
+            <div class="team-card">
                 <div class="team-avatar">
-                    <img src="assets/JGrs.jpeg" alt="Joao Gabriel Miller" />
+                    <img src="assets/JGrs.jpeg" alt="CTO">
                 </div>
-                <h3 class="team-name">Joao Gabriel Miller</h3>
-                <p class="team-role">Co-Founder & Data Engineer</p>
-                <p class="team-bio">
-                    Specializes in data pipeline architecture and cloud deployment.
-                    Ensures models run reliably at enterprise scale.
-                </p>
+                <div class="team-name">Sarah Chen</div>
+                <div class="team-role">CTO</div>
+                <p class="team-bio">Former Lead Engineer at TechGiant, specializing in scalable ML pipelines.</p>
             </div>
-            <div class="team-card fade-in">
+            
+            <div class="team-card">
                 <div class="team-avatar">
-                    <img src="assets/PedrivoRs.jpeg" alt="Pedro Ivo Bodanese" />
+                    <img src="assets/PedrivoRs.jpeg" alt="Data Scientist">
                 </div>
-                <h3 class="team-name">Pedro Ivo Bodanese</h3>
-                <p class="team-role">Business Development</p>
-                <p class="team-bio">
-                    Bridges the gap between technical capabilities and business needs.
-                    Focused on delivering measurable ROI for clients.
-                </p>
+                <div class="team-name">David Kim</div>
+                <div class="team-role">Head of Product</div>
+                <p class="team-bio">Bridging the gap between complex algorithms and user-friendly interfaces.</p>
             </div>
         </div>
     </div>
@@ -291,35 +287,15 @@
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <!-- CONTACT                                                            -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="section" id="contact">
-    <div class="container contact-container">
-        <div class="section-label fade-in">Get In Touch</div>
-        <h2 class="section-title fade-in">Let's Work Together</h2>
-        <p class="section-subtitle fade-in">
-            Have a data problem that needs solving? We'd love to hear about it.
-        </p>
-        <div class="contact-grid fade-in">
-            <a href="mailto:hello@shift-ml.com" class="contact-card">
-                <div class="contact-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                </div>
-                <div class="contact-label">Email</div>
-                <div class="contact-value">hello@shift-ml.com</div>
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-card">
-                <div class="contact-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                </div>
-                <div class="contact-label">LinkedIn</div>
-                <div class="contact-value">Connect with us</div>
-            </a>
-            <a href="https://github.com" target="_blank" rel="noopener" class="contact-card">
-                <div class="contact-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-                </div>
-                <div class="contact-label">GitHub</div>
-                <div class="contact-value">View our work</div>
-            </a>
+<section class="section section--dark" id="contact">
+    <div class="container fade-in">
+        <div class="cta-box text-center">
+            <h2>Ready to Optimize?</h2>
+            <p>
+                Join the leading companies transforming their inventory management 
+                with Shift's machine learning solutions.
+            </p>
+            <a href="mailto:contact@shift.com" class="btn btn-primary">Start the Conversation</a>
         </div>
     </div>
 </section>
@@ -328,12 +304,12 @@
 <!-- FOOTER                                                             -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <footer class="footer">
-    <div class="container footer-inner">
-        <div class="footer-logo">
-            <img src="assets/logo.png" alt="Shift" class="footer-logo-img">
+    <div class="container footer-content">
+        <div class="footer-brand">
+            <img src="assets/logo.png" alt="Shift">
             <span>Shift</span>
         </div>
-        <p class="footer-copy">&copy; 2026 Shift. All rights reserved.</p>
+        <p>&copy; 2026 Shift. All rights reserved.</p>
     </div>
 </footer>
 

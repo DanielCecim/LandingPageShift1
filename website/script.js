@@ -17,65 +17,131 @@ const observer = new IntersectionObserver(
 document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
 
 // ── Mobile nav toggle ────────────────────────────────────────────────
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.getElementById('navLinks');
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
 
-navToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-});
-
-// Close mobile nav on link click
-navLinks.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
+if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+        navToggle.classList.toggle('active');
     });
-});
 
-// ── Nav background on scroll ─────────────────────────────────────────
-const nav = document.getElementById('nav');
+    // Close mobile nav on link click
+    navLinks.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            navToggle.classList.remove('active');
+        });
+    });
+}
 
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        nav.style.background = 'rgba(10, 14, 26, 0.95)';
-    } else {
-        nav.style.background = 'rgba(10, 14, 26, 0.85)';
+// ── Nav scroll effect ────────────────────────────────────────────────
+const nav = document.querySelector('.nav');
+
+if (nav) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 20) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+}
+
+// ── Hero Wave Animation (WavyBackground Port) ────────────────────────
+const initWaves = () => {
+    const canvas = document.getElementById('bg-canvas');
+    if (!canvas) return;
+    
+    // Ensure SimplexNoise is available from CDN
+    if (typeof SimplexNoise === 'undefined') {
+        console.warn('SimplexNoise library not loaded.');
+        return;
     }
-});
 
-//  Number Counter Animation 
-const counters = document.querySelectorAll('.counter');
-const speed = 200; // The lower the slower
+    const ctx = canvas.getContext('2d');
+    const simplex = new SimplexNoise();
 
-const animateCounters = () => {
-    counters.forEach(counter => {
-        const updateCount = () => {
-            const target = +counter.getAttribute('data-target');
-            const count = +counter.innerText;
-            const inc = target / speed;
+    let w = canvas.width = window.innerWidth;
+    let h = canvas.height = window.innerHeight;
+    let nt = 0;
+    
+    const waveColors = [
+        "#ff0080", // Vibrant Pink
+        "#7928ca", // Deep Purple
+        "#4f46e5", // Indigo
+        "#00d4ff", // Cyan
+        "#ff0080"  // Pink loop
+    ];
+    
+    const waveWidth = 200; // Much thicker to create the "aurora" effect
+    const blur = 30; // High blur for soft gradients
+    const waveOpacity = 0.5;
 
-            if (count < target) {
-                counter.innerText = Math.ceil(count + inc);
-                setTimeout(updateCount, 20);
-            } else {
-                counter.innerText = target;
-            }
-        };
-        updateCount();
+    // Fixed resize handler
+    window.addEventListener('resize', () => {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+        ctx.filter = `blur(${blur}px)`;
     });
+
+    const drawWave = (n) => {
+        nt += 0.003; 
+        for (let i = 0; i < n; i++) {
+            ctx.beginPath();
+            ctx.lineWidth = waveWidth;
+            ctx.strokeStyle = waveColors[i % waveColors.length];
+            
+            for (let x = 0; x < w; x += 5) {
+                // Using 3D noise (x, y, z) -> (position, layer, time)
+                // x / 600 -> smoother, wider curves
+                // Multiplier * 300 -> tall amplitude
+                const y = simplex.noise3D(x / 600, 0.3 * i, nt) * 300;
+                ctx.lineTo(x, y + h * 0.5); 
+            }
+            ctx.stroke();
+            ctx.closePath();
+        }
+    };
+
+    const render = () => {
+        ctx.fillStyle = "#1e002e"; // Deep plum/dark violet background
+        ctx.globalAlpha = waveOpacity;
+        ctx.fillRect(0, 0, w, h);
+        ctx.filter = `blur(${blur}px)`;
+        
+        drawWave(6); 
+        requestAnimationFrame(render);
+    };
+
+    render();
 };
 
-// Trigger animation when metrics section is in view
-const metricsSection = document.querySelector('.metrics-grid');
-if (metricsSection) {
-    const metricsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounters();
-                metricsObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    metricsObserver.observe(metricsSection);
+// Initialize waves when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initWaves);
+} else {
+    initWaves();
 }
+
+// ── Smooth Scroll for Anchor Links ───────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            const navHeight = 80; // approximate nav height
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+    
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
+    });
+});
 
