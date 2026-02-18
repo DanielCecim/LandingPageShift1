@@ -16,22 +16,20 @@
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <!-- NAVIGATION                                                         -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<nav class="nav fade-in">
+<nav class="nav">
     <div class="nav-inner">
         <a href="#" class="nav-logo">
             <img src="assets/logo.png" alt="Shift" class="nav-logo-img">
-            <!-- Icon only in nav usually, but text can be added if needed -->
-            <!-- <span class="nav-logo-text">Shift</span> -->
         </a>
-        
+
         <ul class="nav-links">
             <li><a href="#about">Quem somos</a></li>
             <li><a href="#how">Como funciona</a></li>
             <li><a href="#case-study">Estudo de caso</a></li>
         </ul>
-        
+
         <a href="#contact" class="nav-btn">Entre em contato</a>
-        
+
         <div class="nav-toggle">
             <span></span><span></span><span></span>
         </div>
@@ -39,48 +37,51 @@
 </nav>
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- BRAND HEADER (White Section)                                       -->
+<!-- SCROLL CONTAINER                                                   -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="brand-header fade-in">
-    <div class="container text-center">
-        <video src="assets/logo.mp4" class="brand-logo" autoplay loop muted playsinline></video>
-        <div class="brand-name">Shift</div>
-    </div>
-</section>
+<div id="slider">
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- HERO SECTION                                                       -->
+<!-- BRAND HEADER + HERO (Combined Slide)                               -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<header class="hero">
-    <canvas id="bg-canvas"></canvas>
-    
-    <div class="hero-content fade-in">
-        <h1 class="hero-title">
-            <span style="font-weight: 800;">Otimização de Estoque</span> <br>
-            <span style="font-weight: 400; color: #ffffff;">com Machine Learning</span>
-        </h1>
-        
-        <p class="hero-subtitle">
-            A Shift monta o seu planejamento comercial baseado em 
-            treinamento de dados, reduzindo erros de estoque 
-            significativamente.
-        </p>
-        
-        <div class="hero-cta">
-            <a href="#how" class="btn btn-primary">Veja como funciona</a>
-            <a href="#contact" class="btn btn-secondary">Entre em contato</a>
-        </div>
+<section class="slide hero-slide" data-theme="light">
+    <div class="brand-header">
+        <div class="container text-center slide-content">
+            <video src="assets/logo.mp4" class="brand-logo" autoplay loop muted playsinline></video>
+            <div class="brand-name">Shift</div>
         </div>
     </div>
-</header>
+
+    <header class="hero">
+        <canvas id="bg-canvas"></canvas>
+
+        <div class="hero-content slide-content">
+            <h1 class="hero-title">
+                <span style="font-weight: 800;">Otimização de Estoque</span> <br>
+                <span style="font-weight: 400; color: #ffffff;">com Machine Learning</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                A Shift monta o seu planejamento comercial baseado em
+                treinamento de dados, reduzindo erros de estoque
+                significativamente.
+            </p>
+
+            <div class="hero-cta">
+                <a href="#how" class="gradient-button">Veja como funciona</a>
+                <a href="#contact" class="gradient-button ghost">Entre em contato</a>
+            </div>
+        </div>
+    </header>
+</section>
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <!-- ABOUT SECTION (Quem Somos)                                         -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="section section--dark" id="about">
-    <div class="container">
+<section class="section section--dark slide" id="about" data-theme="dark">
+    <div class="container slide-content">
         <div class="split-layout">
-            <div class="split-text fade-in">
+            <div class="split-text">
                 <div class="section-label-pink">QUEM SOMOS</div>
                 <h2 class="about-heading">
                     A Shift nasceu com um propósito:
@@ -91,33 +92,33 @@
                 </div>
                 <div class="section-desc">
                     <p>
-                        A Shift é uma startup <span class="text-gradient-pink">especializada em machine learning</span> que ajuda empresas a otimizar 
+                        A Shift é uma startup <span class="text-gradient-pink">especializada em machine learning</span> que ajuda empresas a otimizar
                         decisões operacionais complexas com ciência de dados e inteligência artificial.
                         Desenvolvemos sistemas de ML de ponta a ponta.
                     </p>
                     <p>
-                        Não apenas prevemos, recomendamos ações, quantificamos riscos e medimos 
-                        impacto. Integramos machine learning aos processos reais do negócio para 
+                        Não apenas prevemos, recomendamos ações, quantificamos riscos e medimos
+                        impacto. Integramos machine learning aos processos reais do negócio para
                         <span class="text-gradient-pink">aumentar eficiência, reduzir custos e melhorar resultados.</span>
                     </p>
                 </div>
             </div>
-            
-            <div class="split-cards fade-in delay-200">
+
+            <div class="split-cards stagger">
                 <div class="feature-card">
                     <div class="feature-icon icon-ring"></div>
                     <div class="feature-content">
                         <h3>Engenharia de dados</h3>
                     </div>
                 </div>
-                
+
                 <div class="feature-card">
                     <div class="feature-icon icon-chart"></div>
                     <div class="feature-content">
                         <h3>Forecasting probabilístico</h3>
                     </div>
                 </div>
-                
+
                 <div class="feature-card">
                     <div class="feature-icon icon-dash"></div>
                     <div class="feature-content">
@@ -132,43 +133,42 @@
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <!-- PROCESS STEPS (Como funciona)                                      -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="section section--dark" id="how">
-    <div class="container">
-        <div class="section-header text-center fade-in">
+<section class="section section--dark slide" id="how" data-theme="dark">
+    <div class="container slide-content">
+        <div class="section-header text-center">
             <div class="section-label-pink">COMO FUNCIONA</div>
             <h2 class="section-title">Etapas do Processo</h2>
         </div>
-        
-        <div class="process-grid fade-in">
+
+        <div class="process-grid stagger">
             <div class="process-card">
                 <div class="process-number">1</div>
                 <h3>Análise de dados</h3>
                 <p>
-                    Conectamos às suas fontes de dados existentes — ERP, sistemas de ponto de 
-                    venda (POS), sistemas de armazém — e construímos um conjunto de dados limpo 
-                    e rico em atributos. Nosso modelo trata automaticamente valores ausentes, 
-                    outliers e o alinhamento temporal dos dados. 
+                    Conectamos às suas fontes de dados existentes — ERP, sistemas de ponto de
+                    venda (POS), sistemas de armazém — e construímos um conjunto de dados limpo
+                    e rico em atributos.
                     <span class="text-gradient-pink">Sem alterar nada no banco de dados.</span>
                 </p>
             </div>
-            
+
             <div class="process-card">
                 <div class="process-number">2</div>
                 <h3>Aplicação do Machine Learning</h3>
                 <p>
-                    Utilizando técnicas avançadas como Regressão Quantilica e Gradient Boosting, 
-                    treinamos modelos capazes de capturar padrões complexos de demanda. 
+                    Utilizando técnicas avançadas como Regressão Quantilica e Gradient Boosting,
+                    treinamos modelos capazes de capturar padrões complexos de demanda.
                     <span class="text-gradient-pink">Recomendamos modelos capazes de capturar padrões complexos de demanda.</span>
                     A validação cruzada garante previsões robustas e confiáveis.
                 </p>
             </div>
-            
+
             <div class="process-card">
                 <div class="process-number">3</div>
                 <h3>Implementação</h3>
                 <p>
-                    As previsões se transformam em recomendações acionáveis. Implementamos 
-                    dashboards interativos com análise de cenários, permitindo que sua equipe 
+                    As previsões se transformam em recomendações acionáveis. Implementamos
+                    dashboards interativos com análise de cenários, permitindo que sua equipe
                     <span class="text-gradient-pink">ajuste estratégias e visualize o impacto em tempo real.</span>
                 </p>
             </div>
@@ -179,18 +179,18 @@
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <!-- CASE STUDY (Estudo de Caso)                                        -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="section section--dark" id="case-study">
-    <div class="container">
-        <div class="section-label-pink fade-in">ESTUDO DE CASO</div>
-        <h2 class="section-title fade-in">
+<section class="section section--dark slide" id="case-study" data-theme="dark">
+    <div class="container slide-content">
+        <div class="section-label-pink">ESTUDO DE CASO</div>
+        <h2 class="section-title">
             Resultados obtidos no setor de <span class="text-gradient">Moda Feminina</span>
         </h2>
-        <p class="section-subtitle fade-in">
-            Uma grande varejista de moda enfrentava um dilema crítico: <span class="text-gradient-pink">excesso recorrente de estoque em algumas regiões e rupturas em outras.</span> 
+        <p class="section-subtitle">
+            Uma grande varejista de moda enfrentava um dilema crítico: <span class="text-gradient-pink">excesso recorrente de estoque em algumas regiões e rupturas em outras.</span>
             A empresa recorreu à Shift para transformar seu planejamento de estoque.
         </p>
 
-        <div class="case-grid fade-in">
+        <div class="case-grid">
             <div class="case-card challenge-card">
                 <div class="case-header">
                     <h3>Desafio</h3>
@@ -219,27 +219,27 @@
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <!-- IMPACT (Impacto)                                                   -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="section section--dark" id="impact">
-    <div class="container">
-        <div class="section-header text-center fade-in">
+<section class="section section--dark slide" id="impact" data-theme="dark">
+    <div class="container slide-content">
+        <div class="section-header text-center">
             <h2 class="section-title">Impacto</h2>
         </div>
-        
-        <div class="impact-grid fade-in">
+
+        <div class="impact-grid">
             <div class="impact-item">
-                <div class="impact-value text-gradient-pink">55%</div>
+                <div class="impact-value text-gradient-pink"><span class="count-up" data-target="55">0</span>%</div>
                 <div class="impact-label">Sobras reduzidas</div>
                 <div class="impact-desc">Estoque excedente eliminado enquanto se mantêm os níveis de serviço</div>
             </div>
-            
+
             <div class="impact-item">
-                <div class="impact-value text-gradient-pink">95%</div>
+                <div class="impact-value text-gradient-pink"><span class="count-up" data-target="95">0</span>%</div>
                 <div class="impact-label">Taxa de preenchimento</div>
                 <div class="impact-desc">Alta disponibilidade de produtos mantida de forma consistente</div>
             </div>
-            
+
             <div class="impact-item">
-                <div class="impact-value text-gradient-pink">+90%</div>
+                <div class="impact-value text-gradient-pink">+<span class="count-up" data-target="90">0</span>%</div>
                 <div class="impact-label">Precisão do modelo</div>
                 <div class="impact-desc">A pontuação R² supera significativamente as linhas de base anteriores</div>
             </div>
@@ -250,28 +250,24 @@
 <!-- ═══════════════════════════════════════════════════════════════════ -->
 <!-- TEAM                                                               -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- TEAM                                                               -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="section" id="team">
+<section class="section slide" id="team" data-theme="dark">
     <canvas id="team-canvas"></canvas>
-    <div class="container">
-        <div class="section-header text-center fade-in">
+    <div class="container slide-content">
+        <div class="section-header text-center">
             <div class="section-label-cyan">CONHEÇA O TIME</div>
             <h2 class="section-title">Os responsáveis pela <span class="text-gradient-cyan">mudança</span></h2>
         </div>
-        
-        <div class="team-grid fade-in">
+
+        <div class="team-grid stagger">
             <div class="team-card">
                 <div class="team-avatar">
-                   <!-- Using existing asset provided in previous index.html -->
                     <img src="assets/DNrs.jpeg" alt="Daniel Ramos">
                 </div>
                 <div class="team-name">Daniel Ramos</div>
                 <div class="team-role">COFUNDADOR E<br>ENGENHEIRO DE PRODUÇÃO</div>
                 <p class="team-bio">É especialista em análise de dados, criação e implementação de modelos de Machine Learning</p>
             </div>
-            
+
             <div class="team-card">
                 <div class="team-avatar">
                     <img src="assets/JGrs.jpeg" alt="João Miller">
@@ -280,7 +276,7 @@
                 <div class="team-role">COFUNDADOR E<br>ENGENHEIRO DE PRODUÇÃO</div>
                 <p class="team-bio">É especialista em análise de dados, criação e implementação de modelos de Machine Learning</p>
             </div>
-            
+
             <div class="team-card">
                 <div class="team-avatar">
                     <img src="assets/PedrivoRs.jpeg" alt="Pedro Ivo Bodanese">
@@ -294,45 +290,59 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- CONTACT (Vamos trabalhar juntos)                                   -->
+<!-- CONTACT + FOOTER (Last Slide)                                      -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="section section--white" id="contact">
-    <div class="container fade-in">
-        <div class="cta-box text-center">
-            <h2 class="cta-title">Vamos trabalhar <span class="text-gradient-pink">juntos!</span></h2>
-            <p class="cta-subtitle">
-                Tem alguma operação precisando de melhorias?<br>
-                Adoraríamos ouvir sobre isso
-            </p>
-            <a href="mailto:contact@shift.com" class="btn btn-cta">Entre em contato</a>
+<section class="slide" id="contact-slide" data-theme="light">
+    <div class="contact-footer-wrap">
+        <div class="section section--white" id="contact">
+            <div class="container slide-content">
+                <div class="cta-box text-center">
+                    <h2 class="cta-title">Vamos trabalhar <span class="text-gradient-pink">juntos!</span></h2>
+                    <p class="cta-subtitle">
+                        Tem alguma operação precisando de melhorias?<br>
+                        Adoraríamos ouvir sobre isso
+                    </p>
+                    <a href="mailto:contact@shift.com" class="gradient-button">Entre em contato</a>
+                </div>
+            </div>
         </div>
+
+        <footer class="footer">
+            <div class="container footer-content">
+                <div class="footer-links">
+                    <a href="#about">Quem somos</a>
+                    <a href="#how">Como funciona</a>
+                    <a href="#case-study">Estudo de caso</a>
+                    <a href="#privacy">Política de privacidade</a>
+                </div>
+
+                <div class="footer-socials">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:contact@shift.com"><i class="far fa-envelope"></i></a>
+                </div>
+
+                <div class="footer-brand-right">
+                    <img src="assets/logo.png" alt="Shift" class="footer-logo">
+                    <div class="footer-copy">&copy; 2026 Shift. All rights reserved.</div>
+                </div>
+            </div>
+        </footer>
     </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- FOOTER                                                             -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<footer class="footer">
-    <div class="container footer-content">
-        <div class="footer-links">
-            <a href="#about">Quem somos</a>
-            <a href="#how">Como funciona</a>
-            <a href="#case-study">Estudo de caso</a>
-            <a href="#privacy">Política de privacidade</a>
-        </div>
-        
-        <div class="footer-socials">
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-whatsapp"></i></a>
-            <a href="mailto:contact@shift.com"><i class="far fa-envelope"></i></a>
-        </div>
+</div><!-- end #slider -->
 
-        <div class="footer-brand-right">
-            <img src="assets/logo.png" alt="Shift" class="footer-logo">
-            <div class="footer-copy">&copy; 2026 Shift. All rights reserved.</div>
-        </div>
-    </div>
-</footer>
+<!-- DOT NAVIGATION -->
+<div id="dots">
+    <button class="dot active"></button>
+    <button class="dot"></button>
+    <button class="dot"></button>
+    <button class="dot"></button>
+    <button class="dot"></button>
+    <button class="dot"></button>
+    <button class="dot"></button>
+</div>
 
 <script src="script.js"></script>
 </body>
