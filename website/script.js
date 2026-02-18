@@ -154,13 +154,22 @@ function initWaves() {
     ];
 
     const waveWidth = 200;
-    const blur = 30;
+    let blur = 30;
     const waveOpacity = 0.5;
 
-    window.addEventListener('resize', () => {
+    function updateDimensions() {
         w = canvas.width = window.innerWidth;
         h = canvas.height = window.innerHeight;
-    });
+        
+        if (window.innerWidth < 768) {
+            blur = 70; 
+        } else {
+            blur = 30;
+        }
+    }
+
+    window.addEventListener('resize', updateDimensions);
+    updateDimensions();
 
     const drawWave = (n) => {
         nt += 0.003;
@@ -211,13 +220,22 @@ function initTeamWaves() {
     ];
 
     const waveWidth = 100;
-    const blur = 25;
+
+    let blur = 25;
     const waveOpacity = 0.35;
 
-    window.addEventListener('resize', () => {
+    function updateTeamDimensions() {
         w = canvas.width = canvas.parentElement.offsetWidth;
         h = canvas.height = canvas.parentElement.offsetHeight;
-    });
+        if (window.innerWidth < 768) {
+            blur = 50; 
+        } else {
+            blur = 25;
+        }
+    }
+
+    window.addEventListener('resize', updateTeamDimensions);
+    updateTeamDimensions();
 
     const drawWave = (n) => {
         nt += 0.0025;

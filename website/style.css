@@ -958,12 +958,12 @@ img { max-width: 100%; height: auto; display: block; }
     .brand-name { font-size: 2rem; }
 
     .hero-slide .brand-header {
-        padding-top: var(--nav-height);
+        padding-top: 3rem; /* Reduced to pull content up */
         padding-bottom: 0;
     }
 
     .hero-slide .brand-header .brand-logo {
-        margin-top: 0;
+        margin-top: -1rem;
     }
 
     /* Hero — fixed height, not flex-grow */
