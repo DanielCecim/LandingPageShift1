@@ -958,24 +958,30 @@ img { max-width: 100%; height: auto; display: block; }
     .brand-name { font-size: 2rem; }
 
     .hero-slide .brand-header {
-        padding-top: 3rem; /* Reduced to pull content up */
-        padding-bottom: 0;
+        padding-top: var(--nav-height); /* Ensure it clears the nav */
+        padding-bottom: 1rem;
     }
 
     .hero-slide .brand-header .brand-logo {
-        margin-top: -1rem;
+        margin-top: 0.5rem; /* Slight spacing from nav */
+        margin-bottom: 0;
     }
 
     /* Hero — fixed height, not flex-grow */
     .hero-slide .hero {
-        flex: none;
+        flex: 1; /* Allow it to fill the screen */
         height: auto;
-        padding-top: 1.5rem;
-        padding-bottom: 2.5rem;
+        padding-top: 2rem;
+        padding-bottom: 4rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .hero-slide {
-        min-height: auto;
+        min-height: 100vh; /* Full screen on mobile */
+        display: flex;
+        flex-direction: column;
     }
 
     #bg-canvas {

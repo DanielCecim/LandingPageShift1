@@ -162,7 +162,7 @@ function initWaves() {
         h = canvas.height = window.innerHeight;
         
         if (window.innerWidth < 768) {
-            blur = 70; 
+            blur = 500; 
         } else {
             blur = 30;
         }
@@ -228,7 +228,7 @@ function initTeamWaves() {
         w = canvas.width = canvas.parentElement.offsetWidth;
         h = canvas.height = canvas.parentElement.offsetHeight;
         if (window.innerWidth < 768) {
-            blur = 50; 
+            blur = 500; 
         } else {
             blur = 25;
         }
