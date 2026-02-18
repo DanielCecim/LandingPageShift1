@@ -992,8 +992,8 @@ img { max-width: 100%; height: auto; display: block; }
     /* Apply blur via CSS since mobile Safari caps canvas filter blur */
     #bg-canvas,
     #team-canvas {
-        filter: blur(60px);
-        -webkit-filter: blur(60px);
+        filter: blur(30px);
+        -webkit-filter: blur(30px);
     }
 
     .hero-slide {
