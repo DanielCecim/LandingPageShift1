@@ -160,6 +160,19 @@ img { max-width: 100%; height: auto; display: block; }
     object-fit: contain;
 }
 
+.brand-logo-img-mobile {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .brand-logo-video {
+        display: none;
+    }
+    .brand-logo-img-mobile {
+        display: block;
+    }
+}
+
 .brand-name {
     font-size: 4rem;
     font-weight: 800;
