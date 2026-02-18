@@ -907,14 +907,16 @@ img { max-width: 100%; height: auto; display: block; }
         flex-direction: column;
         gap: 0;
         padding: 0.5rem 0;
-        transform: translateY(-120%);
-        transition: transform 0.3s ease;
+        transform: translateY(-200%);
+        transition: transform 0.3s ease, visibility 0.3s;
         z-index: 999;
         box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        visibility: hidden; /* Fully hide when closed */
     }
 
     .nav-links.open {
         transform: translateY(0);
+        visibility: visible;
     }
 
     .nav-links a {
