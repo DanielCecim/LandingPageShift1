@@ -2774,7 +2774,7 @@
 
         <div class="impact-stat"> 
 
-          <div class="number"><span class="count-up" data-target="55">0</span>%</div> 
+          <div class="number"><span class="count-up" data-target="76">0</span>%</div> 
 
           <div class="stat-title">Sobras reduzidas</div> 
 
@@ -2784,7 +2784,7 @@
 
         <div class="impact-stat"> 
 
-          <div class="number"><span class="count-up" data-target="95">0</span>%</div> 
+          <div class="number"><span class="count-up" data-target="97.5">0</span>%</div> 
 
           <div class="stat-title">Taxa de preenchimento</div> 
 
@@ -2794,7 +2794,7 @@
 
         <div class="impact-stat"> 
 
-          <div class="number">+<span class="count-up" data-target="90">0</span>%</div> 
+          <div class="number">+<span class="count-up" data-target="85">0</span>%</div> 
 
           <div class="stat-title">Precisão do modelo</div> 
 
