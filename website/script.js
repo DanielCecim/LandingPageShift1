@@ -326,7 +326,9 @@ function initTypewriter() {
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    let typeSpeed = 0.5;
+    let typeSpeed = 150;
+    const mobile = window.innerWidth < 768;
+    console.log('[Typewriter] initialized, mobile:', mobile, 'el:', el);
 
     // Add cursor
     const cursor = document.createElement('span');
@@ -337,13 +339,13 @@ function initTypewriter() {
         const current = texts[textIndex];
         
         if (isDeleting) {
-            el.textContent = current.substring(0, charIndex - 1);
             charIndex--;
-            typeSpeed = 0.25;
+            el.textContent = current.substring(0, charIndex);
+            typeSpeed = mobile ? 100 : 75;
         } else {
-            el.textContent = current.substring(0, charIndex + 1);
             charIndex++;
-            typeSpeed = 0.5;
+            el.textContent = current.substring(0, charIndex);
+            typeSpeed = mobile ? 180 : 150;
         }
 
         if (!isDeleting && charIndex === current.length) {
