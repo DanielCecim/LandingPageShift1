@@ -156,8 +156,8 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .brand-logo {
-    width: min(18vw, 14vh, 250px);
-    height: min(18vw, 14vh, 250px);
+    width: min(22vw, 22vh, 280px);
+    height: min(22vw, 22vh, 280px);
     margin-bottom: -0.5rem;
     object-fit: contain;
 }
@@ -176,7 +176,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .brand-name {
-    font-size: clamp(1.2rem, 2.5vh, 4rem);
+    font-size: clamp(1.5rem, 3.5vh, 4rem);
     font-weight: 800;
     color: #000;
     letter-spacing: -0.05em;
@@ -1457,8 +1457,8 @@ img { max-width: 100%; height: auto; display: block; }
     min-height: 0;
     padding-top: clamp(1rem, 2vh, 2rem);
     padding-bottom: clamp(1.5rem, 3vh, 3rem);
-    /* Ensure hero always takes at least 65% of the viewport */
-    min-height: 65vh;
+    /* 60/40 split: hero takes ~60% of viewport */
+    min-height: 55vh;
 }
 
 /* Hero CTA button row */
