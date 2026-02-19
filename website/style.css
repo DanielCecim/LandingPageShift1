@@ -156,8 +156,8 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .brand-logo {
-    width: min(18vw, 20vh, 250px);
-    height: min(18vw, 20vh, 250px);
+    width: min(18vw, 14vh, 250px);
+    height: min(18vw, 14vh, 250px);
     margin-bottom: -0.5rem;
     object-fit: contain;
 }
@@ -176,7 +176,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .brand-name {
-    font-size: clamp(1.5rem, 3vh, 4rem);
+    font-size: clamp(1.2rem, 2.5vh, 4rem);
     font-weight: 800;
     color: #000;
     letter-spacing: -0.05em;
@@ -1445,10 +1445,7 @@ img { max-width: 100%; height: auto; display: block; }
 .hero-slide .brand-header {
     padding-top: var(--nav-height);
     padding-bottom: 0;
-    flex-shrink: 0;
-    /* Cap brand header to ~30% of viewport so hero always gets ~70% */
-    max-height: 30vh;
-    overflow: hidden;
+    flex: 0 0 auto; /* Only take natural height — no grow, no fixed basis */
 }
 
 .hero-slide .brand-header .brand-logo {
