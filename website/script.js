@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── Wave Animations ──────────────────────────────────────────────
     try {
-        initWaves();
+        initMeshGradient();
         initTeamWaves();
     } catch(e) {
         console.warn('Wave animations failed:', e);
@@ -160,17 +160,15 @@ document.addEventListener('DOMContentLoaded', () => {
     initTypewriter();
     initNetwork();
     initTilt();
+    initGlowingEffect();
 });
 
-// ── Hero Wave Animation (WavyBackground Port) ────────────────────────
-function initWaves() {
+// ── Hero Wave Animation (SimplexNoise — mirrors team section) ─────────
+function initMeshGradient() {
     const canvas = document.getElementById('bg-canvas');
     if (!canvas) return;
 
-    if (typeof SimplexNoise === 'undefined') {
-        console.warn('SimplexNoise library not loaded.');
-        return;
-    }
+    if (typeof SimplexNoise === 'undefined') return;
 
     const ctx = canvas.getContext('2d');
     const simplex = new SimplexNoise();
@@ -178,22 +176,21 @@ function initWaves() {
     let w, h;
     let nt = 0;
     let animId = null;
-    let isVisible = true;
+    let isVisible = true; // Hero is the first slide — start immediately
 
     const waveColors = [
-        "#ff0080", "#7928ca", "#4f46e5", "#00d4ff", "#ff0080"
+        "#4c1d95", "#0f766e", "#5b21b6", "#be185d",
+        "#4338ca", "#1d4ed8", "#701a75"
     ];
 
-    const waveWidth = 200;
-    let blur = 30;
-    const waveOpacity = 0.5;
-    const isMobile = () => window.innerWidth < 768;
-    const step = isMobile() ? 20 : 10;
+    const waveWidth = 100;
+    let blur = 25;
+    const waveOpacity = 0.35;
 
     function updateDimensions() {
-        w = canvas.width = window.innerWidth;
+        w = canvas.width  = window.innerWidth;
         h = canvas.height = window.innerHeight;
-        blur = isMobile() ? 10000 : 30;
+        blur = window.innerWidth < 768 ? 10000 : 25;
     }
 
     window.addEventListener('resize', updateDimensions);
@@ -202,22 +199,21 @@ function initWaves() {
     // Pause when not visible
     const section = canvas.closest('.slide');
     if (section) {
-        const visObs = new IntersectionObserver(entries => {
+        new IntersectionObserver(entries => {
             isVisible = entries[0].isIntersecting;
             if (isVisible && !animId) render();
-        }, { threshold: 0.05 });
-        visObs.observe(section);
+        }, { threshold: 0.05 }).observe(section);
     }
 
     const drawWave = (n) => {
-        nt += 0.003;
+        nt += 0.0025;
         for (let i = 0; i < n; i++) {
             ctx.beginPath();
             ctx.lineWidth = waveWidth;
             ctx.strokeStyle = waveColors[i % waveColors.length];
 
-            for (let x = 0; x < w; x += step) {
-                const y = simplex.noise3D(x / 600, 0.3 * i, nt) * 300;
+            for (let x = 0; x < w; x += 40) {
+                const y = simplex.noise3D(x / 400, 0.2 * i, nt) * 200;
                 ctx.lineTo(x, y + h * 0.5);
             }
             ctx.stroke();
@@ -227,12 +223,12 @@ function initWaves() {
 
     const render = () => {
         if (!isVisible) { animId = null; return; }
-        ctx.fillStyle = "#1e002e";
-        ctx.globalAlpha = waveOpacity;
-        ctx.fillRect(0, 0, w, h);
-        ctx.filter = `blur(${blur}px)`;
+        ctx.clearRect(0, 0, w, h);
 
-        drawWave(5);
+        ctx.filter = `blur(${blur}px)`;
+        ctx.globalAlpha = waveOpacity;
+
+        drawWave(7);
         animId = requestAnimationFrame(render);
     };
 
@@ -345,7 +341,7 @@ function initTypewriter() {
         } else {
             charIndex++;
             el.textContent = current.substring(0, charIndex);
-            typeSpeed = mobile ? 180 : 150;
+            typeSpeed = mobile ? 70 : 55;
         }
 
         if (!isDeleting && charIndex === current.length) {
@@ -475,6 +471,51 @@ function initNetwork() {
 
     resize(); // init
     animate();
+}
+
+// ── Glowing Mouse-Follow Border Effect ────────────────────────────
+function initGlowingEffect() {
+    const elements = Array.from(document.querySelectorAll(
+        '.feature-card, .process-card, .team-card, .contact-form'
+    ));
+    if (!elements.length) return;
+
+    const PROXIMITY = 64;   // px outside the card that still activates the glow
+    const INACTIVE_ZONE = 0.01; // fraction of the card radius that disables glow at center
+
+    document.addEventListener('mousemove', (e) => {
+        elements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            const cx = rect.left + rect.width  * 0.5;
+            const cy = rect.top  + rect.height * 0.5;
+
+            const distFromCenter = Math.hypot(e.clientX - cx, e.clientY - cy);
+            const inactiveRadius = 0.5 * Math.min(rect.width, rect.height) * INACTIVE_ZONE;
+
+            if (distFromCenter < inactiveRadius) {
+                el.style.setProperty('--active', '0');
+                return;
+            }
+
+            const isNear =
+                e.clientX > rect.left   - PROXIMITY &&
+                e.clientX < rect.right  + PROXIMITY &&
+                e.clientY > rect.top    - PROXIMITY &&
+                e.clientY < rect.bottom + PROXIMITY;
+
+            el.style.setProperty('--active', isNear ? '1' : '0');
+
+            if (isNear) {
+                const angle = (Math.atan2(e.clientY - cy, e.clientX - cx) * 180 / Math.PI) + 90;
+                el.style.setProperty('--start', angle.toFixed(1));
+            }
+        });
+    });
+
+    // Reset all when mouse leaves the page
+    document.addEventListener('mouseleave', () => {
+        elements.forEach(el => el.style.setProperty('--active', '0'));
+    });
 }
 
 // ── 3D Tilt Effect for Cards ───────────────────────────────────────

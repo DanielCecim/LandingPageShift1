@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js" defer></script>
 </head>
@@ -21,6 +21,7 @@
     <div class="nav-inner">
         <a href="#" class="nav-logo">
             <img src="assets/logo.png" alt="Shift" class="nav-logo-img">
+            <span class="nav-logo-text">Shift</span>
         </a>
 
         <ul class="nav-links">
@@ -283,44 +284,18 @@
 </section>
 
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- CONTACT + FOOTER (Last Slide)                                      -->
+<!-- CONTACT CTA (Slide 6)                                              -->
 <!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="slide" id="contact-slide" data-theme="light">
-    <div class="contact-footer-wrap">
-        <div class="section section--white" id="contact">
-            <div class="container slide-content">
-                <div class="cta-box text-center">
-                    <h2 class="cta-title">Vamos trabalhar <span class="text-gradient-pink">juntos!</span></h2>
-                    <p class="cta-subtitle">
-                        Tem alguma operação precisando de melhorias?<br>
-                        Adoraríamos ouvir sobre isso
-                    </p>
-                    <a href="#formulario" class="gradient-button">Entre em contato</a>
-                </div>
-            </div>
+<section class="slide section--white" id="contact-slide" data-theme="light">
+    <div class="container slide-content">
+        <div class="cta-box text-center">
+            <h2 class="cta-title">Vamos trabalhar juntos!</h2>
+            <p class="cta-subtitle">
+                Tem alguma operação precisando de melhorias?<br>
+                Adoraríamos ouvir sobre isso
+            </p>
+            <a href="#formulario" class="gradient-button">Entre em contato</a>
         </div>
-
-        <footer class="footer">
-            <div class="container footer-content">
-                <div class="footer-links">
-                    <a href="#about">Quem somos</a>
-                    <a href="#how">Como funciona</a>
-                    <a href="#case-study">Estudo de caso</a>
-                    <a href="#privacy">Política de privacidade</a>
-                </div>
-
-                <div class="footer-socials">
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    <a href="mailto:contact@shift.com"><i class="far fa-envelope"></i></a>
-                </div>
-
-                <div class="footer-brand-right">
-                    <img src="assets/logo.png" alt="Shift" class="footer-logo">
-                    <div class="footer-copy">&copy; 2026 Shift. All rights reserved.</div>
-                </div>
-            </div>
-        </footer>
     </div>
 </section>
 
@@ -389,7 +364,7 @@
 
                 <div class="form-group">
                     <label for="form-message">MENSAGEM</label>
-                    <textarea id="form-message" name="message" rows="4" placeholder="Descreva o desafio operacional que você quer resolver..."></textarea>
+                    <textarea id="form-message" name="message" rows="3" placeholder="Descreva o desafio operacional que você quer resolver..."></textarea>
                 </div>
 
                 <button type="submit" class="gradient-button form-submit-btn">Enviar mensagem</button>
@@ -429,11 +404,38 @@
     </div>
 </section>
 
+
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- FOOTER (Slide 8)                                                   -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="slide" id="footer-slide" data-theme="dark">
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="#about">Quem somos</a>
+                <a href="#how">Como funciona</a>
+                <a href="#case-study">Estudo de caso</a>
+                <a href="#privacy">Política de privacidade</a>
+            </div>
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:contact@shift.com"><i class="far fa-envelope"></i></a>
+            </div>
+            <div class="footer-brand-right">
+                <img src="assets/logo.png" alt="Shift" class="footer-logo">
+                <div class="footer-copy">&copy; 2026 Shift. All rights reserved.</div>
+            </div>
+        </div>
+    </footer>
+</section>
+
 </div><!-- end #slider -->
 
 <!-- DOT NAVIGATION -->
 <div id="dots">
     <button class="dot active"></button>
+    <button class="dot"></button>
     <button class="dot"></button>
     <button class="dot"></button>
     <button class="dot"></button>
