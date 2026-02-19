@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,442 +9,477 @@
     <link rel="stylesheet" href="style.css?v=2">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Atkinson+Hyperlegible:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        media="print" onload="this.media='all'">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js" defer></script>
 </head>
+
 <body>
 
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- NAVIGATION                                                         -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<nav class="nav">
-    <div class="nav-inner">
-        <a href="#" class="nav-logo">
-            <img src="assets/logo.png" alt="Shift" class="nav-logo-img">
-            <span class="nav-logo-text">Shift</span>
-        </a>
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- NAVIGATION                                                         -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo">
+                <img src="assets/logo.png" alt="Shift" class="nav-logo-img">
+                <span class="nav-logo-text">Shift</span>
+            </a>
 
-        <ul class="nav-links">
-            <li><a href="#about">Quem somos</a></li>
-            <li><a href="#how">Como funciona</a></li>
-            <li><a href="#case-study">Estudo de caso</a></li>
-        </ul>
+            <ul class="nav-links">
+                <li><a href="#about">Quem somos</a></li>
+                <li><a href="#how">Como funciona</a></li>
+                <li><a href="#case-study">Estudo de caso</a></li>
+            </ul>
 
-        <a href="#formulario" class="nav-btn">Entre em contato</a>
+            <a href="#formulario" class="nav-btn">Entre em contato</a>
 
-        <div class="nav-toggle">
-            <span></span><span></span><span></span>
-        </div>
-    </div>
-</nav>
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- SCROLL CONTAINER                                                   -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<div id="slider">
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- BRAND HEADER + HERO (Combined Slide)                               -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="slide hero-slide" data-theme="light">
-    <div class="brand-header">
-        <div class="container text-center slide-content">
-            <video id="logo-video" src="assets/logo.mp4" class="brand-logo brand-logo-video" autoplay loop muted playsinline preload="auto"></video>
-            <img src="assets/logo.png" alt="Shift" class="brand-logo brand-logo-img-mobile" id="logo-img">
-            <script>
-            // Force video play & fallback to static image if it fails
-            (function() {
-                var vid = document.getElementById('logo-video');
-                var img = document.getElementById('logo-img');
-                if (!vid) return;
-
-                function showFallback() {
-                    vid.style.display = 'none';
-                    img.style.display = 'block';
-                }
-
-                // Try to play programmatically
-                var playPromise = vid.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(function() { showFallback(); });
-                }
-
-                // If video errors or stalls for too long, show fallback
-                vid.addEventListener('error', showFallback);
-
-                // Safety net: if video hasn't started after 4s, show image
-                setTimeout(function() {
-                    if (vid.paused || vid.readyState < 2) { showFallback(); }
-                }, 4000);
-            })();
-            </script>
-            <div class="brand-name">Shift</div>
-        </div>
-    </div>
-
-    <header class="hero">
-        <canvas id="bg-canvas"></canvas>
-
-        <div class="hero-content slide-content">
-            <h1 class="hero-title">
-                <span style="font-weight: 800;">Otimização de Estoque</span> <br>
-                <span style="font-weight: 400; color: #ffffff;">com </span><span class="typewriter-text" style="font-weight: 400; color: #ffffff;">Machine Learning</span>
-            </h1>
-
-            <p class="hero-subtitle">
-                A Shift monta o seu planejamento comercial baseado em
-                treinamento de dados, reduzindo erros de estoque
-                significativamente.
-            </p>
-
-            <div class="hero-cta">
-                <a href="#how" class="gradient-button">Veja como funciona</a>
-                <a href="#formulario" class="gradient-button ghost">Entre em contato</a>
+            <div class="nav-toggle">
+                <span></span><span></span><span></span>
             </div>
         </div>
-    </header>
-</section>
+    </nav>
 
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- ABOUT SECTION (Quem Somos)                                         -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="section section--dark slide" id="about" data-theme="dark">
-    <canvas id="network-canvas"></canvas>
-    <div class="container slide-content">
-        <div class="split-layout">
-            <div class="split-text">
-                <div class="section-label-pink">QUEM SOMOS</div>
-                <h2 class="about-heading">
-                    A Shift nasceu com um propósito:
-                </h2>
-                <div class="about-hero-text">
-                    <span class="grad-blue-pink">Transformar dados em</span> <br>
-                    <span class="grad-pink">vantagem competitiva</span>
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- SCROLL CONTAINER                                                   -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <div id="slider">
+
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <!-- BRAND HEADER + HERO (Combined Slide)                               -->
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <section class="slide hero-slide" data-theme="light">
+            <div class="brand-header">
+                <div class="container text-center slide-content">
+                    <video id="logo-video" src="assets/logo.mp4" class="brand-logo brand-logo-video" autoplay loop muted
+                        playsinline preload="auto"></video>
+                    <img src="assets/logo.png" alt="Shift" class="brand-logo brand-logo-img-mobile" id="logo-img">
+                    <script>
+                        // Force video play & fallback to static image if it fails
+                        (function () {
+                            var vid = document.getElementById('logo-video');
+                            var img = document.getElementById('logo-img');
+                            if (!vid) return;
+
+                            function showFallback() {
+                                vid.style.display = 'none';
+                                img.style.display = 'block';
+                            }
+
+                            // Try to play programmatically
+                            var playPromise = vid.play();
+                            if (playPromise !== undefined) {
+                                playPromise.catch(function () { showFallback(); });
+                            }
+
+                            // If video errors or stalls for too long, show fallback
+                            vid.addEventListener('error', showFallback);
+
+                            // Safety net: if video hasn't started after 4s, show image
+                            setTimeout(function () {
+                                if (vid.paused || vid.readyState < 2) { showFallback(); }
+                            }, 4000);
+                        })();
+                    </script>
+                    <div class="brand-name">Shift</div>
                 </div>
-                <div class="section-desc">
-                    <p>
-                        A Shift é uma startup <span class="text-gradient-pink">especializada em machine learning</span> que ajuda empresas a otimizar
-                        decisões operacionais complexas com ciência de dados e inteligência artificial.
-                        Desenvolvemos sistemas de ML de ponta a ponta.
+            </div>
+
+            <header class="hero">
+                <canvas id="bg-canvas"></canvas>
+
+                <div class="hero-content slide-content">
+                    <h1 class="hero-title">
+                        <span style="font-weight: 800;">Otimização de Estoque</span> <br>
+                        <span style="font-weight: 400; color: #ffffff;">com </span><span class="typewriter-text"
+                            style="font-weight: 400; color: #ffffff;">Machine Learning</span>
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        A Shift monta o seu planejamento comercial baseado em
+                        treinamento de dados, reduzindo erros de estoque
+                        significativamente.
                     </p>
-                    <p>
-                        Não apenas prevemos, recomendamos ações, quantificamos riscos e medimos
-                        impacto. Integramos machine learning aos processos reais do negócio para
-                        <span class="text-gradient-pink">aumentar eficiência, reduzir custos e melhorar resultados.</span>
-                    </p>
-                </div>
-            </div>
 
-            <div class="split-cards stagger">
-                <div class="feature-card">
-                    <div class="feature-icon icon-ring"></div>
-                    <div class="feature-content">
-                        <h3>Engenharia de dados</h3>
+                    <div class="hero-cta">
+                        <a href="#how" class="gradient-button">Veja como funciona</a>
+                        <a href="#formulario" class="gradient-button ghost">Entre em contato</a>
                     </div>
                 </div>
+            </header>
+        </section>
 
-                <div class="feature-card">
-                    <div class="feature-icon icon-chart"></div>
-                    <div class="feature-content">
-                        <h3>Forecasting probabilístico</h3>
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <!-- ABOUT SECTION (Quem Somos)                                         -->
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <section class="section section--dark slide" id="about" data-theme="dark">
+            <canvas id="network-canvas"></canvas>
+            <div class="container slide-content">
+                <div class="split-layout">
+                    <div class="split-text">
+                        <div class="section-label-pink">QUEM SOMOS</div>
+                        <h2 class="about-heading">
+                            A Shift nasceu com um propósito:
+                        </h2>
+                        <div class="about-hero-text">
+                            <span class="grad-blue-pink">Transformar dados em</span> <br>
+                            <span class="grad-pink">vantagem competitiva</span>
+                        </div>
+                        <div class="section-desc">
+                            <p>
+                                A Shift é uma startup <span class="text-gradient-pink">especializada em machine
+                                    learning</span> que ajuda empresas a otimizar
+                                decisões operacionais complexas com ciência de dados e inteligência artificial.
+                                Desenvolvemos sistemas de ML de ponta a ponta.
+                            </p>
+                            <p>
+                                Não apenas prevemos, recomendamos ações, quantificamos riscos e medimos
+                                impacto. Integramos machine learning aos processos reais do negócio para
+                                <span class="text-gradient-pink">aumentar eficiência, reduzir custos e melhorar
+                                    resultados.</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="split-cards stagger">
+                        <div class="feature-card">
+                            <div class="feature-icon icon-ring"></div>
+                            <div class="feature-content">
+                                <h3>Engenharia de dados</h3>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon icon-chart"></div>
+                            <div class="feature-content">
+                                <h3>Forecasting probabilístico</h3>
+                            </div>
+                        </div>
+
+                        <div class="feature-card">
+                            <div class="feature-icon icon-dash"></div>
+                            <div class="feature-content">
+                                <h3>Dashboard interativo</h3>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="feature-card">
-                    <div class="feature-icon icon-dash"></div>
-                    <div class="feature-content">
-                        <h3>Dashboard interativo</h3>
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <!-- PROCESS STEPS (Como funciona)                                      -->
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <section class="section section--dark slide" id="how" data-theme="dark">
+            <div class="container slide-content">
+                <div class="section-header text-center">
+                    <div class="section-label-pink">COMO FUNCIONA</div>
+                    <h2 class="section-title">Etapas do Processo</h2>
+                </div>
+
+                <div class="process-grid stagger">
+                    <div class="process-card">
+                        <div class="process-number">1</div>
+                        <h3>Análise de dados</h3>
+                        <p>
+                            Conectamos às suas fontes de dados existentes — ERP, sistemas de ponto de
+                            venda (POS), sistemas de armazém — e construímos um conjunto de dados limpo
+                            e rico em atributos.
+                            <span class="text-gradient-pink">Sem alterar nada no banco de dados.</span>
+                        </p>
+                    </div>
+
+                    <div class="process-card">
+                        <div class="process-number">2</div>
+                        <h3>Machine Learning CV</h3>
+                        <p>
+                            Aqui avaliamos as possiveis estrategias e aplicamos uma validacao cruzada robusta para a
+                            melhor performance de nossas recomedacoes.
+                            <span class="text-gradient-pink">Somos capazes de capturar padroes complexos sob
+                                demanda</span>
+                        </p>
+                    </div>
+
+                    <div class="process-card">
+                        <div class="process-number">3</div>
+                        <h3>Implementação</h3>
+                        <p>
+                            As previsões se transformam em recomendações acionáveis. Implementamos
+                            dashboards interativos com análise de cenários, permitindo que sua equipe
+                            <span class="text-gradient-pink">ajuste estratégias e visualize o impacto em tempo
+                                real.</span>
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- PROCESS STEPS (Como funciona)                                      -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="section section--dark slide" id="how" data-theme="dark">
-    <div class="container slide-content">
-        <div class="section-header text-center">
-            <div class="section-label-pink">COMO FUNCIONA</div>
-            <h2 class="section-title">Etapas do Processo</h2>
-        </div>
-
-        <div class="process-grid stagger">
-            <div class="process-card">
-                <div class="process-number">1</div>
-                <h3>Análise de dados</h3>
-                <p>
-                    Conectamos às suas fontes de dados existentes — ERP, sistemas de ponto de
-                    venda (POS), sistemas de armazém — e construímos um conjunto de dados limpo
-                    e rico em atributos.
-                    <span class="text-gradient-pink">Sem alterar nada no banco de dados.</span>
-                </p>
-            </div>
-
-            <div class="process-card">
-                <div class="process-number">2</div>
-                <h3>Machine Learning CV</h3>
-                <p>
-                    Aqui avaliamos as possiveis estrategias e aplicamos uma validacao cruzada robusta para a melhor performance de nossas recomedacoes.
-                    <span class="text-gradient-pink">Somos capazes de capturar padroes complexos sob demanda</span>
-                </p>
-            </div>
-
-            <div class="process-card">
-                <div class="process-number">3</div>
-                <h3>Implementação</h3>
-                <p>
-                    As previsões se transformam em recomendações acionáveis. Implementamos
-                    dashboards interativos com análise de cenários, permitindo que sua equipe
-                    <span class="text-gradient-pink">ajuste estratégias e visualize o impacto em tempo real.</span>
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- CASE STUDY + IMPACT (Combined Slide)                              -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="section section--dark slide" id="case-study" data-theme="dark">
-    <div class="container slide-content">
-        <div class="section-label-pink">ESTUDO DE CASO</div>
-        <h2 class="section-title">
-            Resultados obtidos no setor de <span class="text-gradient">Moda Feminina</span>
-        </h2>
-        <p class="section-subtitle">
-            Uma grande varejista de moda enfrentava um dilema crítico: <span class="text-gradient-pink">excesso recorrente de estoque em algumas regiões e rupturas em outras.</span>
-            A empresa recorreu à Shift para transformar seu planejamento de estoque.
-        </p>
-
-        <div class="impact-grid">
-            <div class="impact-item">
-                <div class="impact-value text-gradient-pink"><span class="count-up" data-target="76">0</span>%</div>
-                <div class="impact-label">Sobras reduzidas</div>
-                <div class="impact-desc">Estoque excedente eliminado enquanto se mantêm os níveis de serviço</div>
-            </div>
-
-            <div class="impact-item">
-                <div class="impact-value text-gradient-pink"><span class="count-up" data-target="97.5">0</span>%</div>
-                <div class="impact-label">Taxa de preenchimento</div>
-                <div class="impact-desc">Alta disponibilidade de produtos mantida de forma consistente</div>
-            </div>
-
-            <div class="impact-item">
-                <div class="impact-value text-gradient-pink">+<span class="count-up" data-target="85">0</span>%</div>
-                <div class="impact-label">Precisão do modelo</div>
-                <div class="impact-desc">A pontuação R² supera significativamente as linhas de base anteriores</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- TEAM                                                               -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="section slide" id="team" data-theme="dark">
-    <canvas id="team-canvas"></canvas>
-    <div class="container slide-content">
-        <div class="section-header text-center">
-            <div class="section-label-cyan">CONHEÇA O TIME</div>
-            <h2 class="section-title">Os responsáveis pela <span class="text-gradient-cyan">mudança</span></h2>
-        </div>
-
-        <div class="team-grid stagger">
-            <div class="team-card">
-                <div class="team-avatar">
-                    <img src="assets/DNrs.jpeg" alt="Daniel Ramos">
-                </div>
-                <div class="team-name">Daniel Ramos</div>
-                <div class="team-role">COFUNDADOR E<br>ENGENHEIRO DE PRODUÇÃO</div>
-                <p class="team-bio">É especialista em análise de dados, criação e implementação de modelos de Machine Learning</p>
-            </div>
-
-            <div class="team-card">
-                <div class="team-avatar">
-                    <img src="assets/JGrs.jpeg" alt="João Miller">
-                </div>
-                <div class="team-name">João Miller</div>
-                <div class="team-role">COFUNDADOR E<br>ENGENHEIRO DE PRODUÇÃO</div>
-                <p class="team-bio">É especialista em análise de dados, criação e implementação de modelos de Machine Learning</p>
-            </div>
-
-            <div class="team-card">
-                <div class="team-avatar">
-                    <img src="assets/PedrivoRs.jpeg" alt="Pedro Ivo Bodanese">
-                </div>
-                <div class="team-name">Pedro Ivo Bodanese</div>
-                <div class="team-role">COFUNDADOR E<br>ENGENHEIRO DE PRODUÇÃO</div>
-                <p class="team-bio">É especialista em análise de dados, criação e implementação de modelos de Machine Learning</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- CONTACT CTA (Slide 6)                                              -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="slide section--white" id="contact-slide" data-theme="light">
-    <div class="container slide-content">
-        <div class="cta-box text-center">
-            <h2 class="cta-title">Vamos trabalhar juntos!</h2>
-            <p class="cta-subtitle">
-                Tem alguma operação precisando de melhorias?<br>
-                Adoraríamos ouvir sobre isso
-            </p>
-            <a href="#formulario" class="gradient-button">Entre em contato</a>
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- FORMULARIO (Contact Form)                                          -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="section section--dark slide" id="formulario" data-theme="dark">
-    <div class="container slide-content">
-        <div class="form-split">
-            <div class="form-info">
-                <div class="section-label-pink">ENTRE EM CONTATO</div>
-                <h2 class="form-heading">
-                    Vamos transformar seus dados em
-                    <span class="grad-pink">vantagem competitiva</span>
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <!-- CASE STUDY + IMPACT (Combined Slide)                              -->
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <section class="section section--dark slide" id="case-study" data-theme="dark">
+            <div class="container slide-content">
+                <div class="section-label-pink">ESTUDO DE CASO</div>
+                <h2 class="section-title">
+                    Resultados obtidos no setor de <span class="text-gradient">Moda Feminina</span>
                 </h2>
-                <p class="form-desc">
-                    Tem alguma operação precisando de melhorias? Adoraríamos ouvir sobre
-                    isso e montar uma solução personalizada para o seu negócio.
+                <p class="section-subtitle">
+                    Uma grande varejista de moda enfrentava um dilema crítico: <span class="text-gradient-pink">excesso
+                        recorrente de estoque em algumas regiões e rupturas em outras.</span>
+                    A empresa recorreu à Shift para transformar seu planejamento de estoque.
                 </p>
-                <ul class="form-contact-list">
-                    <li>
-                        <i class="far fa-envelope"></i>
-                        <a href="mailto:contato@shiftai.com.br">contato@shiftai.com.br</a>
-                    </li>
-                    <li>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>São Paulo, Brasil</span>
-                    </li>
-                    <li>
-                        <i class="fab fa-linkedin"></i>
-                        <a href="https://linkedin.com/company/shiftai" target="_blank">linkedin.com/company/shiftai</a>
-                    </li>
-                </ul>
+
+                <div class="impact-grid">
+                    <div class="impact-item">
+                        <div class="impact-value text-gradient-pink"><span class="count-up" data-target="76">0</span>%
+                        </div>
+                        <div class="impact-label">Sobras reduzidas</div>
+                        <div class="impact-desc">Estoque excedente eliminado enquanto se mantêm os níveis de serviço
+                        </div>
+                    </div>
+
+                    <div class="impact-item">
+                        <div class="impact-value text-gradient-pink"><span class="count-up" data-target="97.5">0</span>%
+                        </div>
+                        <div class="impact-label">Taxa de preenchimento</div>
+                        <div class="impact-desc">Alta disponibilidade de produtos mantida de forma consistente</div>
+                    </div>
+
+                    <div class="impact-item">
+                        <div class="impact-value text-gradient-pink">+<span class="count-up" data-target="85">0</span>%
+                        </div>
+                        <div class="impact-label">Precisão do modelo</div>
+                        <div class="impact-desc">A pontuação R² supera significativamente as linhas de base anteriores
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <form class="contact-form" id="contact-form" action="https://formspree.io/f/xpqjleez" method="POST">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="form-name">NOME</label>
-                        <input type="text" id="form-name" name="name" placeholder="Seu nome" required>
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <!-- TEAM                                                               -->
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <section class="section slide" id="team" data-theme="dark">
+            <canvas id="team-canvas"></canvas>
+            <div class="container slide-content">
+                <div class="section-header text-center">
+                    <div class="section-label-cyan">CONHEÇA O TIME</div>
+                    <h2 class="section-title">Os responsáveis pela <span class="text-gradient-cyan">mudança</span></h2>
+                </div>
+
+                <div class="team-grid stagger">
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <img src="assets/DNrs.jpeg" alt="Daniel Ramos">
+                        </div>
+                        <div class="team-name">Daniel Ramos</div>
+                        <div class="team-role">COFUNDADOR E<br>ENGENHEIRO DE PRODUÇÃO</div>
+                        <p class="team-bio">É especialista em análise de dados, criação e implementação de modelos de
+                            Machine Learning</p>
+                        <a href="https://www.linkedin.com/in/daniel-cecim-ramos-0b8766290" target="_blank"
+                            rel="noopener noreferrer" class="team-linkedin">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
                     </div>
-                    <div class="form-group">
-                        <label for="form-company">EMPRESA</label>
-                        <input type="text" id="form-company" name="company" placeholder="Nome da empresa">
+
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <img src="assets/JGrs.jpeg" alt="João Miller">
+                        </div>
+                        <div class="team-name">João Miller</div>
+                        <div class="team-role">COFUNDADOR E<br>ENGENHEIRO DE PRODUÇÃO</div>
+                        <p class="team-bio">É especialista em análise de dados, criação e implementação de modelos de
+                            Machine Learning</p>
+                        <a href="https://www.linkedin.com/in/joaogmiller/" target="_blank" rel="noopener noreferrer"
+                            class="team-linkedin">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+
+                    <div class="team-card">
+                        <div class="team-avatar">
+                            <img src="assets/PedrivoRs.jpeg" alt="Pedro Ivo Bodanese">
+                        </div>
+                        <div class="team-name">Pedro Ivo Bodanese</div>
+                        <div class="team-role">COFUNDADOR E<br>ENGENHEIRO DE PRODUÇÃO</div>
+                        <p class="team-bio">É especialista em análise de dados, criação e implementação de modelos de
+                            Machine Learning</p>
+                        <a href="https://www.linkedin.com/in/pedro-ivo-lopes-bodanese-788423273/" target="_blank"
+                            rel="noopener noreferrer" class="team-linkedin">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="form-group">
-                    <label for="form-email">E-MAIL</label>
-                    <input type="email" id="form-email" name="email" placeholder="seu@email.com" required>
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <!-- CONTACT CTA (Slide 6)                                              -->
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <section class="slide section--white" id="contact-slide" data-theme="light">
+            <div class="container slide-content">
+                <div class="cta-box text-center">
+                    <h2 class="cta-title">Vamos trabalhar juntos!</h2>
+                    <p class="cta-subtitle">
+                        Tem alguma operação precisando de melhorias?<br>
+                        Adoraríamos ouvir sobre isso
+                    </p>
+                    <a href="#formulario" class="gradient-button">Entre em contato</a>
                 </div>
+            </div>
+        </section>
 
-                <div class="form-group">
-                    <label for="form-sector">SETOR</label>
-                    <select id="form-sector" name="sector" required>
-                        <option value="" disabled selected>Selecione seu setor</option>
-                        <option value="varejo">Varejo</option>
-                        <option value="industria">Indústria</option>
-                        <option value="logistica">Logística</option>
-                        <option value="financeiro">Financeiro</option>
-                        <option value="saude">Saúde</option>
-                        <option value="tecnologia">Tecnologia</option>
-                        <option value="outro">Outro</option>
-                    </select>
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <!-- FORMULARIO (Contact Form)                                          -->
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <section class="section section--dark slide" id="formulario" data-theme="dark">
+            <div class="container slide-content">
+                <div class="form-split">
+                    <div class="form-info">
+                        <div class="section-label-pink">ENTRE EM CONTATO</div>
+                        <h2 class="form-heading">
+                            Vamos transformar seus dados em
+                            <span class="grad-pink">vantagem competitiva</span>
+                        </h2>
+                        <p class="form-desc">
+                            Tem alguma operação precisando de melhorias? Adoraríamos ouvir sobre
+                            isso e montar uma solução personalizada para o seu negócio.
+                        </p>
+                        <ul class="form-contact-list">
+                            <li>
+                                <i class="far fa-envelope"></i>
+                                <a href="mailto:contato@shiftai.com.br">contato@shiftai.com.br</a>
+                            </li>
+                            <li>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>São Paulo, Brasil</span>
+                            </li>
+                            <li>
+                                <i class="fab fa-linkedin"></i>
+                                <a href="https://linkedin.com/company/shiftai"
+                                    target="_blank">linkedin.com/company/shiftai</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <form class="contact-form" id="contact-form" action="https://formspree.io/f/xpqjleez" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="form-name">NOME</label>
+                                <input type="text" id="form-name" name="name" placeholder="Seu nome" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="form-company">EMPRESA</label>
+                                <input type="text" id="form-company" name="company" placeholder="Nome da empresa">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form-email">E-MAIL</label>
+                            <input type="email" id="form-email" name="email" placeholder="seu@email.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form-sector">SETOR</label>
+                            <select id="form-sector" name="sector" required>
+                                <option value="" disabled selected>Selecione seu setor</option>
+                                <option value="varejo">Varejo</option>
+                                <option value="industria">Indústria</option>
+                                <option value="logistica">Logística</option>
+                                <option value="financeiro">Financeiro</option>
+                                <option value="saude">Saúde</option>
+                                <option value="tecnologia">Tecnologia</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form-message">MENSAGEM</label>
+                            <textarea id="form-message" name="message" rows="3"
+                                placeholder="Descreva o desafio operacional que você quer resolver..."></textarea>
+                        </div>
+
+                        <button type="submit" class="gradient-button form-submit-btn">Enviar mensagem</button>
+                        <p class="form-status" id="form-status"></p>
+                    </form>
+
+                    <script>
+                        document.getElementById('contact-form').addEventListener('submit', async function (e) {
+                            e.preventDefault();
+                            const form = e.target;
+                            const btn = form.querySelector('.form-submit-btn');
+                            const status = document.getElementById('form-status');
+                            btn.textContent = 'Enviando...';
+                            btn.disabled = true;
+                            try {
+                                const res = await fetch(form.action, {
+                                    method: 'POST',
+                                    body: new FormData(form),
+                                    headers: { 'Accept': 'application/json' }
+                                });
+                                if (res.ok) {
+                                    status.textContent = 'Mensagem enviada com sucesso!';
+                                    status.style.color = '#34d399';
+                                    form.reset();
+                                } else {
+                                    throw new Error();
+                                }
+                            } catch {
+                                status.textContent = 'Erro ao enviar. Tente novamente.';
+                                status.style.color = '#f87171';
+                            }
+                            btn.textContent = 'Enviar mensagem';
+                            btn.disabled = false;
+                        });
+                    </script>
                 </div>
+            </div>
+        </section>
 
-                <div class="form-group">
-                    <label for="form-message">MENSAGEM</label>
-                    <textarea id="form-message" name="message" rows="3" placeholder="Descreva o desafio operacional que você quer resolver..."></textarea>
+
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <!-- FOOTER (Slide 8)                                                   -->
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <section class="slide" id="footer-slide" data-theme="dark">
+            <footer class="footer">
+                <div class="container footer-content">
+                    <div class="footer-links">
+                        <a href="#about">Quem somos</a>
+                        <a href="#how">Como funciona</a>
+                        <a href="#case-study">Estudo de caso</a>
+                        <a href="#privacy">Política de privacidade</a>
+                    </div>
+                    <div class="footer-socials">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="mailto:contact@shift.com"><i class="far fa-envelope"></i></a>
+                    </div>
+                    <div class="footer-brand-right">
+                        <img src="assets/logo.png" alt="Shift" class="footer-logo">
+                        <div class="footer-copy">&copy; 2026 Shift. All rights reserved.</div>
+                    </div>
                 </div>
+            </footer>
+        </section>
 
-                <button type="submit" class="gradient-button form-submit-btn">Enviar mensagem</button>
-                <p class="form-status" id="form-status"></p>
-            </form>
+    </div><!-- end #slider -->
 
-            <script>
-            document.getElementById('contact-form').addEventListener('submit', async function(e) {
-                e.preventDefault();
-                const form = e.target;
-                const btn = form.querySelector('.form-submit-btn');
-                const status = document.getElementById('form-status');
-                btn.textContent = 'Enviando...';
-                btn.disabled = true;
-                try {
-                    const res = await fetch(form.action, {
-                        method: 'POST',
-                        body: new FormData(form),
-                        headers: { 'Accept': 'application/json' }
-                    });
-                    if (res.ok) {
-                        status.textContent = 'Mensagem enviada com sucesso!';
-                        status.style.color = '#34d399';
-                        form.reset();
-                    } else {
-                        throw new Error();
-                    }
-                } catch {
-                    status.textContent = 'Erro ao enviar. Tente novamente.';
-                    status.style.color = '#f87171';
-                }
-                btn.textContent = 'Enviar mensagem';
-                btn.disabled = false;
-            });
-            </script>
-        </div>
+    <!-- DOT NAVIGATION -->
+    <div id="dots">
+        <button class="dot active"></button>
+        <button class="dot"></button>
+        <button class="dot"></button>
+        <button class="dot"></button>
+        <button class="dot"></button>
+        <button class="dot"></button>
+        <button class="dot"></button>
+        <button class="dot"></button>
     </div>
-</section>
 
-
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<!-- FOOTER (Slide 8)                                                   -->
-<!-- ═══════════════════════════════════════════════════════════════════ -->
-<section class="slide" id="footer-slide" data-theme="dark">
-    <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-links">
-                <a href="#about">Quem somos</a>
-                <a href="#how">Como funciona</a>
-                <a href="#case-study">Estudo de caso</a>
-                <a href="#privacy">Política de privacidade</a>
-            </div>
-            <div class="footer-socials">
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
-                <a href="mailto:contact@shift.com"><i class="far fa-envelope"></i></a>
-            </div>
-            <div class="footer-brand-right">
-                <img src="assets/logo.png" alt="Shift" class="footer-logo">
-                <div class="footer-copy">&copy; 2026 Shift. All rights reserved.</div>
-            </div>
-        </div>
-    </footer>
-</section>
-
-</div><!-- end #slider -->
-
-<!-- DOT NAVIGATION -->
-<div id="dots">
-    <button class="dot active"></button>
-    <button class="dot"></button>
-    <button class="dot"></button>
-    <button class="dot"></button>
-    <button class="dot"></button>
-    <button class="dot"></button>
-    <button class="dot"></button>
-    <button class="dot"></button>
-</div>
-
-<script src="script.js?v=3" defer></script>
+    <script src="script.js?v=3" defer></script>
 </body>
+
 </html>
