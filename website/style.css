@@ -147,8 +147,8 @@ img { max-width: 100%; height: auto; display: block; }
 /* ── Brand Header (White Section) ─────────────────────────────────── */
 .brand-header {
     background: #fff;
-    padding-top: clamp(20px, 3vw, 40px);
-    padding-bottom: 0.25rem;
+    padding-top: clamp(10px, 2vh, 40px);
+    padding-bottom: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -156,9 +156,9 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .brand-logo {
-    width: clamp(120px, 18vw, 250px);
-    height: clamp(120px, 18vw, 250px);
-    margin-bottom: clamp(-0.5rem, -0.5vw, -1rem);
+    width: min(18vw, 20vh, 250px);
+    height: min(18vw, 20vh, 250px);
+    margin-bottom: -0.5rem;
     object-fit: contain;
 }
 
@@ -176,19 +176,19 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .brand-name {
-    font-size: clamp(2rem, 3.5vw, 4rem);
+    font-size: clamp(1.5rem, 3vh, 4rem);
     font-weight: 800;
     color: #000;
     letter-spacing: -0.05em;
     line-height: 1;
-    margin-bottom: clamp(0.25rem, 0.5vw, 0.5rem);
+    margin-bottom: 0.25rem;
 }
 
 /* ── Hero ─────────────────────────────────────────────────────────── */
 .hero {
     position: relative;
-    padding-top: clamp(1.5rem, 3vw, 3rem); 
-    padding-bottom: clamp(2.5rem, 4vw, 5rem);
+    padding-top: clamp(1rem, 2vh, 3rem); 
+    padding-bottom: clamp(1.5rem, 4vh, 5rem);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -250,7 +250,7 @@ img { max-width: 100%; height: auto; display: block; }
     line-height: 1.1;
     letter-spacing: -0.03em;
     color: #fff;
-    margin-bottom: clamp(0.25rem, 0.5vw, 0.5rem);
+    margin-bottom: clamp(0.25rem, 0.5vh, 0.5rem);
     text-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
@@ -302,13 +302,13 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* ── Sections ─────────────────────────────────────────────────────── */
 .section {
-    padding: clamp(3rem, 5vw, 6rem) 0;
+    padding: clamp(2rem, 5vh, 6rem) 0;
     position: relative;
 }
 
 .slide > .section,
 .slide.section {
-    padding-top: calc(var(--nav-height) + 4rem);
+    padding-top: calc(var(--nav-height) + clamp(1rem, 3vh, 4rem));
 }
 
 .section--dark {
@@ -351,7 +351,7 @@ img { max-width: 100%; height: auto; display: block; }
     font-size: 1.1rem;
     color: var(--text-muted);
     max-width: 700px;
-    margin-bottom: 3rem;
+    margin-bottom: clamp(1.5rem, 3vh, 3rem);
     line-height: 1.7;
 }
 
@@ -363,7 +363,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .text-center { text-align: center; }
-.section-header.text-center { margin: 0 auto 4rem; max-width: 800px; }
+.section-header.text-center { margin: 0 auto clamp(1.5rem, 3vh, 4rem); max-width: 800px; }
 
 /* ── About Split Layout & Feature Cards ───────────────────────────── */
 .split-layout {
@@ -382,10 +382,10 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .about-hero-text {
-    font-size: clamp(2rem, 4vw, 3.5rem); /* ~56px max, scales fluidly */
+    font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: 800;
     line-height: 1.2;
-    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    margin-bottom: clamp(1rem, 2vh, 2.5rem);
     letter-spacing: -0.02em;
 }
 
@@ -524,7 +524,7 @@ img { max-width: 100%; height: auto; display: block; }
     background: var(--bg-card);
     border: 1px solid rgba(99, 102, 241, 0.2);
     border-radius: 24px;
-    padding: 2.5rem;
+    padding: clamp(1.25rem, 2.5vh, 2.5rem);
     position: relative;
     transition: 0.3s;
     height: 100%;
@@ -537,10 +537,10 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .process-number {
-    font-size: 4rem;
+    font-size: clamp(2.5rem, 4vh, 4rem);
     font-weight: 900;
     line-height: 1;
-    margin-bottom: 1.5rem;
+    margin-bottom: clamp(0.75rem, 1.5vh, 1.5rem);
     background: var(--grad-main);
     -webkit-background-clip: text;
     background-clip: text;
@@ -549,8 +549,8 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .process-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+    margin-bottom: clamp(0.5rem, 1vh, 1rem);
 }
 
 .process-card p {
@@ -621,8 +621,8 @@ img { max-width: 100%; height: auto; display: block; }
 .impact-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 2rem;
+    gap: clamp(1rem, 2vw, 2rem);
+    margin-top: clamp(1rem, 2vh, 2rem);
     text-align: center;
 }
 
@@ -707,9 +707,9 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .team-card {
-    background: #f8fafc; /* White/Light Grey Card */
+    background: #f8fafc;
     border-radius: 30px;
-    padding: 3rem 2rem;
+    padding: clamp(1.5rem, 3vh, 3rem) clamp(1.25rem, 2vw, 2rem);
     text-align: center;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     transition: transform 0.3s ease;
@@ -720,9 +720,9 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .team-avatar {
-    width: 150px;
-    height: 150px;
-    margin: 0 auto 1.5rem;
+    width: min(150px, 15vh);
+    height: min(150px, 15vh);
+    margin: 0 auto clamp(0.75rem, 1.5vh, 1.5rem);
     border-radius: 50%;
     overflow: hidden;
     /* No border in example, or maybe simple white? */
@@ -764,7 +764,7 @@ img { max-width: 100%; height: auto; display: block; }
 .section--white {
     background: #ffffff;
     color: #0f172a;
-    padding: clamp(4rem, 6vw, 8rem) 0;
+    padding: clamp(3rem, 6vh, 8rem) 0;
 }
 
 .cta-box {
@@ -778,15 +778,15 @@ img { max-width: 100%; height: auto; display: block; }
 .cta-title {
     font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: 900;
-    margin-bottom: 1.5rem;
-    color: #4f46e5; /* Indigo base */
+    margin-bottom: clamp(0.75rem, 1.5vh, 1.5rem);
+    color: #4f46e5;
     line-height: 1.1;
 }
 
 .cta-subtitle {
     font-size: clamp(1.1rem, 1.8vw, 1.5rem);
     color: #1e293b;
-    margin-bottom: clamp(2rem, 3vw, 3rem);
+    margin-bottom: clamp(1.5rem, 3vh, 3rem);
     line-height: 1.5;
     font-weight: 500;
 }
@@ -1236,6 +1236,7 @@ img { max-width: 100%; height: auto; display: block; }
         padding-bottom: 0.25rem;
         flex-shrink: 0;
         min-height: auto;
+        max-height: none; /* Remove desktop 30vh cap */
     }
 
     .hero-slide .brand-header .brand-logo {
@@ -1246,6 +1247,7 @@ img { max-width: 100%; height: auto; display: block; }
     .hero-slide .hero {
         flex: 1;
         height: auto;
+        min-height: auto; /* Remove desktop 65vh minimum */
         padding-top: 1rem;
         padding-bottom: 2rem;
         display: flex;
@@ -1444,17 +1446,22 @@ img { max-width: 100%; height: auto; display: block; }
     padding-top: var(--nav-height);
     padding-bottom: 0;
     flex-shrink: 0;
+    /* Cap brand header to ~30% of viewport so hero always gets ~70% */
+    max-height: 30vh;
+    overflow: hidden;
 }
 
 .hero-slide .brand-header .brand-logo {
-    margin-top: -1.5rem;
+    margin-top: clamp(-1.5rem, -1.5vh, -0.5rem);
 }
 
 .hero-slide .hero {
     flex: 1;
     min-height: 0;
-    padding-top: clamp(1rem, 2vw, 2rem);
-    padding-bottom: clamp(1.5rem, 3vw, 3rem);
+    padding-top: clamp(1rem, 2vh, 2rem);
+    padding-bottom: clamp(1.5rem, 3vh, 3rem);
+    /* Ensure hero always takes at least 65% of the viewport */
+    min-height: 65vh;
 }
 
 /* Hero CTA button row */
