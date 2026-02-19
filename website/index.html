@@ -29,7 +29,7 @@
             <li><a href="#case-study">Estudo de caso</a></li>
         </ul>
 
-        <a href="#contact" class="nav-btn">Entre em contato</a>
+        <a href="#formulario" class="nav-btn">Entre em contato</a>
 
         <div class="nav-toggle">
             <span></span><span></span><span></span>
@@ -71,7 +71,7 @@
 
             <div class="hero-cta">
                 <a href="#how" class="gradient-button">Veja como funciona</a>
-                <a href="#contact" class="gradient-button ghost">Entre em contato</a>
+                <a href="#formulario" class="gradient-button ghost">Entre em contato</a>
             </div>
         </div>
     </header>
@@ -157,12 +157,10 @@
 
             <div class="process-card">
                 <div class="process-number">2</div>
-                <h3>Aplicação do Machine Learning</h3>
+                <h3>Machine Learning CV</h3>
                 <p>
-                    Utilizando técnicas avançadas como Regressão Quantilica e Gradient Boosting,
-                    treinamos modelos capazes de capturar padrões complexos de demanda.
-                    <span class="text-gradient-pink">Recomendamos modelos capazes de capturar padrões complexos de demanda.</span>
-                    A validação cruzada garante previsões robustas e confiáveis.
+                    Aqui avaliamos as possiveis estrategias e aplicamos uma validacao cruzada robusta para a melhor performance de nossas recomedacoes.
+                    <span class="text-gradient-pink">Somos capazes de capturar padroes complexos sob demanda</span>
                 </p>
             </div>
 
@@ -270,7 +268,7 @@
                         Tem alguma operação precisando de melhorias?<br>
                         Adoraríamos ouvir sobre isso
                     </p>
-                    <a href="mailto:contact@shift.com" class="gradient-button">Entre em contato</a>
+                    <a href="#formulario" class="gradient-button">Entre em contato</a>
                 </div>
             </div>
         </div>
@@ -299,11 +297,117 @@
     </div>
 </section>
 
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<!-- FORMULARIO (Contact Form)                                          -->
+<!-- ═══════════════════════════════════════════════════════════════════ -->
+<section class="section section--dark slide" id="formulario" data-theme="dark">
+    <div class="container slide-content">
+        <div class="form-split">
+            <div class="form-info">
+                <div class="section-label-pink">ENTRE EM CONTATO</div>
+                <h2 class="form-heading">
+                    Vamos transformar seus dados em
+                    <span class="grad-pink">vantagem competitiva</span>
+                </h2>
+                <p class="form-desc">
+                    Tem alguma operação precisando de melhorias? Adoraríamos ouvir sobre
+                    isso e montar uma solução personalizada para o seu negócio.
+                </p>
+                <ul class="form-contact-list">
+                    <li>
+                        <i class="far fa-envelope"></i>
+                        <a href="mailto:contato@shiftai.com.br">contato@shiftai.com.br</a>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>São Paulo, Brasil</span>
+                    </li>
+                    <li>
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://linkedin.com/company/shiftai" target="_blank">linkedin.com/company/shiftai</a>
+                    </li>
+                </ul>
+            </div>
+
+            <form class="contact-form" id="contact-form" action="https://formspree.io/f/xpqjleez" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="form-name">NOME</label>
+                        <input type="text" id="form-name" name="name" placeholder="Seu nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-company">EMPRESA</label>
+                        <input type="text" id="form-company" name="company" placeholder="Nome da empresa">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="form-email">E-MAIL</label>
+                    <input type="email" id="form-email" name="email" placeholder="seu@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="form-sector">SETOR</label>
+                    <select id="form-sector" name="sector" required>
+                        <option value="" disabled selected>Selecione seu setor</option>
+                        <option value="varejo">Varejo</option>
+                        <option value="industria">Indústria</option>
+                        <option value="logistica">Logística</option>
+                        <option value="financeiro">Financeiro</option>
+                        <option value="saude">Saúde</option>
+                        <option value="tecnologia">Tecnologia</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="form-message">MENSAGEM</label>
+                    <textarea id="form-message" name="message" rows="4" placeholder="Descreva o desafio operacional que você quer resolver..."></textarea>
+                </div>
+
+                <button type="submit" class="gradient-button form-submit-btn">Enviar mensagem</button>
+                <p class="form-status" id="form-status"></p>
+            </form>
+
+            <script>
+            document.getElementById('contact-form').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const form = e.target;
+                const btn = form.querySelector('.form-submit-btn');
+                const status = document.getElementById('form-status');
+                btn.textContent = 'Enviando...';
+                btn.disabled = true;
+                try {
+                    const res = await fetch(form.action, {
+                        method: 'POST',
+                        body: new FormData(form),
+                        headers: { 'Accept': 'application/json' }
+                    });
+                    if (res.ok) {
+                        status.textContent = 'Mensagem enviada com sucesso!';
+                        status.style.color = '#34d399';
+                        form.reset();
+                    } else {
+                        throw new Error();
+                    }
+                } catch {
+                    status.textContent = 'Erro ao enviar. Tente novamente.';
+                    status.style.color = '#f87171';
+                }
+                btn.textContent = 'Enviar mensagem';
+                btn.disabled = false;
+            });
+            </script>
+        </div>
+    </div>
+</section>
+
 </div><!-- end #slider -->
 
 <!-- DOT NAVIGATION -->
 <div id="dots">
     <button class="dot active"></button>
+    <button class="dot"></button>
     <button class="dot"></button>
     <button class="dot"></button>
     <button class="dot"></button>
