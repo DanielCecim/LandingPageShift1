@@ -48,8 +48,35 @@
 <section class="slide hero-slide" data-theme="light">
     <div class="brand-header">
         <div class="container text-center slide-content">
-            <video src="assets/logo.mp4" class="brand-logo brand-logo-video" autoplay loop muted playsinline preload="auto"></video>
-            <img src="assets/logo.png" alt="Shift" class="brand-logo brand-logo-img-mobile">
+            <video id="logo-video" src="assets/logo.mp4" class="brand-logo brand-logo-video" autoplay loop muted playsinline preload="auto"></video>
+            <img src="assets/logo.png" alt="Shift" class="brand-logo brand-logo-img-mobile" id="logo-img">
+            <script>
+            // Force video play & fallback to static image if it fails
+            (function() {
+                var vid = document.getElementById('logo-video');
+                var img = document.getElementById('logo-img');
+                if (!vid) return;
+
+                function showFallback() {
+                    vid.style.display = 'none';
+                    img.style.display = 'block';
+                }
+
+                // Try to play programmatically
+                var playPromise = vid.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(function() { showFallback(); });
+                }
+
+                // If video errors or stalls for too long, show fallback
+                vid.addEventListener('error', showFallback);
+
+                // Safety net: if video hasn't started after 4s, show image
+                setTimeout(function() {
+                    if (vid.paused || vid.readyState < 2) { showFallback(); }
+                }, 4000);
+            })();
+            </script>
             <div class="brand-name">Shift</div>
         </div>
     </div>
