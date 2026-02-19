@@ -149,8 +149,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ── Wave Animations ──────────────────────────────────────────────
-    initWaves();
-    initTeamWaves();
+    try {
+        initWaves();
+        initTeamWaves();
+    } catch(e) {
+        console.warn('Wave animations failed:', e);
+    }
+
+    // ── New Visagio-style Effects ────────────────────────────────────
+    initTypewriter();
+    initNetwork();
+    initTilt();
 });
 
 // ── Hero Wave Animation (WavyBackground Port) ────────────────────────
@@ -301,4 +310,200 @@ function initTeamWaves() {
     };
 
     render();
+}
+
+// ── Typewriter Effect ──────────────────────────────────────────────
+function initTypewriter() {
+    const el = document.querySelector('.typewriter-text');
+    if (!el) return;
+
+    const texts = [
+        "Machine Learning",
+        "Ciência de Dados",
+        "a Shift"
+    ];
+
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typeSpeed = 0.5;
+
+    // Add cursor
+    const cursor = document.createElement('span');
+    cursor.className = 'typewriter-cursor';
+    el.parentNode.insertBefore(cursor, el.nextSibling);
+
+    function type() {
+        const current = texts[textIndex];
+        
+        if (isDeleting) {
+            el.textContent = current.substring(0, charIndex - 1);
+            charIndex--;
+            typeSpeed = 0.25;
+        } else {
+            el.textContent = current.substring(0, charIndex + 1);
+            charIndex++;
+            typeSpeed = 0.5;
+        }
+
+        if (!isDeleting && charIndex === current.length) {
+            isDeleting = true;
+            typeSpeed = 2000; // Pause at end
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % texts.length;
+            typeSpeed = 500; // Pause before typing new
+        }
+
+        setTimeout(type, typeSpeed);
+    }
+
+    // Start with the text already there, then begin deleting after a pause
+    charIndex = texts[0].length;
+    isDeleting = true;
+    setTimeout(type, 2000);
+}
+
+// ── Network Particle Animation (About Section) ─────────────────────
+function initNetwork() {
+    const canvas = document.getElementById('network-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    
+    let w, h;
+    let particles = [];
+    const particleCount = 60;
+    const connectionDist = 150;
+    let mouse = { x: null, y: null };
+
+    // Resize
+    function resize() {
+        w = canvas.width = canvas.parentElement.offsetWidth;
+        h = canvas.height = canvas.parentElement.offsetHeight;
+        createParticles();
+    }
+    
+    window.addEventListener('resize', resize);
+    
+    // Mouse interaction
+    canvas.parentElement.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+    });
+
+    canvas.parentElement.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+    });
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * w;
+            this.y = Math.random() * h;
+            this.vx = (Math.random() - 0.5) * 0.5;
+            this.vy = (Math.random() - 0.5) * 0.5;
+            this.size = Math.random() * 2 + 1;
+        }
+        
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            
+            if (this.x < 0 || this.x > w) this.vx *= -1;
+            if (this.y < 0 || this.y > h) this.vy *= -1;
+            
+            // Mouse interaction
+            if (mouse.x != null) {
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx*dx + dy*dy);
+                if (distance < 150) {
+                    const forceDirectionX = dx / distance;
+                    const forceDirectionY = dy / distance;
+                    const force = (150 - distance) / 150;
+                    const directionX = forceDirectionX * force * 0.5;
+                    const directionY = forceDirectionY * force * 0.5;
+                    this.vx += directionX;
+                    this.vy += directionY;
+                }
+            }
+        }
+        
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(99, 102, 241, 0.5)';
+            ctx.fill();
+        }
+    }
+
+    function createParticles() {
+        particles = [];
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+    }
+
+    function animate() {
+        if (!w || !h) return;
+        ctx.clearRect(0, 0, w, h);
+        
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+            
+            for (let j = i; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < connectionDist) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = `rgba(99, 102, 241, ${1 - distance/connectionDist})`;
+                    ctx.lineWidth = 1;
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
+            }
+        }
+        requestAnimationFrame(animate);
+    }
+
+    resize(); // init
+    animate();
+}
+
+// ── 3D Tilt Effect for Cards ───────────────────────────────────────
+function initTilt() {
+    const cards = document.querySelectorAll('.feature-card, .process-card, .team-card');
+    
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Calculate center
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            // Mouse position relative to center
+            const mouseX = x - centerX;
+            const mouseY = y - centerY;
+            
+            // Rotation (max 10deg)
+            const rotateX = (mouseY / centerY) * -5;
+            const rotateY = (mouseX / centerX) * 5;
+            
+            card.classList.add('tilt-active');
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.classList.remove('tilt-active');
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+        });
+    });
 }

@@ -59,6 +59,8 @@ img { max-width: 100%; height: auto; display: block; }
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 2rem;
+    position: relative;
+    z-index: 10;
 }
 
 /* ── Navigation ───────────────────────────────────────────────────── */
@@ -205,6 +207,33 @@ img { max-width: 100%; height: auto; display: block; }
     width: 100%;
     height: 100%;
     z-index: 0;
+}
+
+/* Network canvas for About Section */
+#network-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Typewriter Cursor */
+.typewriter-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background-color: var(--secondary);
+    vertical-align: text-bottom;
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 .hero-content {
@@ -407,6 +436,13 @@ img { max-width: 100%; height: auto; display: block; }
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    /* Prepare for 3D tilt */
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.tilt-active {
+    transition: transform 0.1s ease-out; /* rapid follow */
 }
 
 .feature-card:hover {
