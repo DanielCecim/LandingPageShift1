@@ -255,7 +255,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .hero-subtitle {
-    font-size: 1.25rem;
+    font-size: clamp(1rem, 1.5vw, 1.25rem);
     color: rgba(255, 255, 255, 0.9);
     max-width: 600px;
     margin: 0 auto 1.5rem;
@@ -302,7 +302,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* ── Sections ─────────────────────────────────────────────────────── */
 .section {
-    padding: 6rem 0;
+    padding: clamp(3rem, 5vw, 6rem) 0;
     position: relative;
 }
 
@@ -369,12 +369,12 @@ img { max-width: 100%; height: auto; display: block; }
 .split-layout {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr; /* More space for text */
-    gap: 4rem;
+    gap: clamp(2rem, 4vw, 4rem);
     align-items: flex-start; /* Align top */
 }
 
 .about-heading {
-    font-size: 2rem; /* ~32px */
+    font-size: clamp(1.5rem, 2.5vw, 2rem); /* ~32px, scales down on smaller screens */
     font-weight: 700;
     color: #fff;
     margin-bottom: 0.75rem;
@@ -382,10 +382,10 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .about-hero-text {
-    font-size: 3.5rem; /* ~56px */
+    font-size: clamp(2rem, 4vw, 3.5rem); /* ~56px max, scales fluidly */
     font-weight: 800;
     line-height: 1.2;
-    margin-bottom: 2.5rem;
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
     letter-spacing: -0.02em;
 }
 
@@ -627,14 +627,14 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .impact-value {
-    font-size: 5rem;
+    font-size: clamp(3rem, 5vw, 5rem);
     font-weight: 900;
     line-height: 1;
     margin-bottom: 0.5rem;
 }
 
 .impact-label {
-    font-size: 1.5rem;
+    font-size: clamp(1.1rem, 1.5vw, 1.5rem);
     font-weight: 700;
     margin-bottom: 0.5rem;
     color: var(--text-main);
@@ -764,7 +764,7 @@ img { max-width: 100%; height: auto; display: block; }
 .section--white {
     background: #ffffff;
     color: #0f172a;
-    padding: 8rem 0;
+    padding: clamp(4rem, 6vw, 8rem) 0;
 }
 
 .cta-box {
@@ -776,7 +776,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .cta-title {
-    font-size: 3.5rem;
+    font-size: clamp(2rem, 4vw, 3.5rem);
     font-weight: 900;
     margin-bottom: 1.5rem;
     color: #4f46e5; /* Indigo base */
@@ -784,9 +784,9 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .cta-subtitle {
-    font-size: 1.5rem;
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
     color: #1e293b;
-    margin-bottom: 3rem;
+    margin-bottom: clamp(2rem, 3vw, 3rem);
     line-height: 1.5;
     font-weight: 500;
 }
@@ -903,7 +903,7 @@ img { max-width: 100%; height: auto; display: block; }
 .form-split {
     display: grid;
     grid-template-columns: 1fr 1.1fr;
-    gap: 4rem;
+    gap: clamp(2rem, 4vw, 4rem);
     align-items: center;
 }
 
@@ -1076,6 +1076,43 @@ img { max-width: 100%; height: auto; display: block; }
 
 .impact-item:hover {
     transform: translateY(-5px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SMALL LAPTOP (max 1200px) — 14" laptops (1366px-1440px viewport)
+   ═══════════════════════════════════════════════════════════════════════ */
+@media (max-width: 1200px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .split-layout {
+        gap: 2.5rem;
+    }
+
+    .about-hero-text { font-size: 2.8rem; }
+    .about-heading { font-size: 1.75rem; }
+    .hero-subtitle { font-size: 1.1rem; }
+
+    .impact-value { font-size: 4rem; }
+    .impact-label { font-size: 1.3rem; }
+
+    .cta-title { font-size: 3rem; }
+    .cta-subtitle { font-size: 1.3rem; }
+
+    .team-grid { max-width: 960px; }
+    .team-card { padding: 2.5rem 1.75rem; }
+
+    .section--white { padding: 6rem 0; }
+
+    .form-split { gap: 2.5rem; }
+
+    .process-card { padding: 2rem; }
+    .process-number { font-size: 3.5rem; }
+
+    .feature-card {
+        padding: 1.1rem 1.75rem;
+    }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
