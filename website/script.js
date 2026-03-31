@@ -419,19 +419,19 @@ function initNetwork() {
                 let dx = mouse.x - this.x;
                 let dy = mouse.y - this.y;
                 let distance = Math.sqrt(dx * dx + dy * dy);
-                if (distance < 80) {
+                if (distance < 50) {
                     const forceDirectionX = dx / distance;
                     const forceDirectionY = dy / distance;
-                    const force = (80 - distance) / 80;
-                    const directionX = forceDirectionX * force * 0.08;
-                    const directionY = forceDirectionY * force * 0.08;
+                    const force = (50 - distance) / 50;
+                    const directionX = forceDirectionX * force * 0.02;
+                    const directionY = forceDirectionY * force * 0.02;
                     this.vx += directionX;
                     this.vy += directionY;
                 }
             }
 
             // Speed cap
-            const maxSpeed = 1.2;
+            const maxSpeed = 0.8;
             const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
             if (speed > maxSpeed) {
                 this.vx = (this.vx / speed) * maxSpeed;
