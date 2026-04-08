@@ -569,6 +569,11 @@ img {
     color: #a855f7;
 }
 
+.icon-stock::after {
+    content: '\f468';
+    color: #0ea5e9;
+}
+
 .feature-content h3 {
     font-size: 1.1rem;
     font-weight: 600;
