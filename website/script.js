@@ -179,19 +179,19 @@ function initMeshGradient() {
     let isVisible = true; // Hero is the first slide — start immediately
 
     const waveColors = [
-        "#6366f1", "#ec4899", "#0ea5e9",  /* primary, secondary, accent /
-        "#3b82f6", "#a855f7", "#4f46e5",  / blue, purple, deep indigo  /
-        "#7c3aed", "#db2777"              / violet, deep pink          */
+        "#ff0080", "#7928ca", "#4f46e5", "#00d4ff", "#ff0080"
     ];
 
-    const waveWidth = 100;
-    let blur = 25;
-    const waveOpacity = 0.35;
+    const waveWidth = 200;
+    const isMobile = () => window.innerWidth < 768;
+    let blur = 30;
+    const waveOpacity = 0.5;
+    const step = isMobile() ? 20 : 10;
 
     function updateDimensions() {
         w = canvas.width = window.innerWidth;
         h = canvas.height = window.innerHeight;
-        blur = window.innerWidth < 768 ? 10000 : 25;
+        blur = isMobile() ? 10000 : 30;
     }
 
     window.addEventListener('resize', updateDimensions);
@@ -207,16 +207,15 @@ function initMeshGradient() {
     }
 
     const drawWave = (n) => {
-        nt += 0.002;
+        nt += 0.003;
         for (let i = 0; i < n; i++) {
             ctx.beginPath();
             ctx.lineWidth = waveWidth;
             ctx.strokeStyle = waveColors[i % waveColors.length];
 
-            for (let x = 0; x < w; x += 35) {
-                const y = simplex.noise3D(x / 350, 0.15 * i, nt) * 300;
-                const verticalOffset = h * 0.5;
-                ctx.lineTo(x, y + verticalOffset);
+            for (let x = 0; x < w; x += step) {
+                const y = simplex.noise3D(x / 600, 0.3 * i, nt) * 300;
+                ctx.lineTo(x, y + h * 0.5);
             }
             ctx.stroke();
             ctx.closePath();
@@ -225,12 +224,12 @@ function initMeshGradient() {
 
     const render = () => {
         if (!isVisible) { animId = null; return; }
-        ctx.clearRect(0, 0, w, h);
-
-        ctx.filter = `blur(${blur}px)`;
+        ctx.fillStyle = "#1e002e";
         ctx.globalAlpha = waveOpacity;
+        ctx.fillRect(0, 0, w, h);
+        ctx.filter = `blur(${blur}px)`;
 
-        drawWave(8);
+        drawWave(5);
         animId = requestAnimationFrame(render);
     };
 
